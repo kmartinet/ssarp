@@ -71,6 +71,14 @@ Martinet, K.M., Román-Palacios, C., & Harmon, L.J. (2025).
 Speciation- Area Relationships Using Web Databases.” _bioRxiv_. 
 doi:10.1101/2024.12.31.630948
 
+## Extending Your SAR Analysees
+
+If you want a deeper exploration of SAR models once you've completed your
+analyses with `ssarp`, the `ssarp::get_richness()` function can create a
+species richness dataframe for use in the [ars R package](https://txm676.github.io/sars/articles/sars-r-package.html).
+The `sars` package allows users to fit a wide variety of SAR models that `ssarp` 
+does not create.
+
 ## Example: Creating a Species-Area Relationship
 
 A species-area relationship (SAR) visualizes the relationship between
