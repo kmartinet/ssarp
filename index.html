@@ -59,7 +59,9 @@
 <!-- badges: start -->
 
 <p><code>ssarp</code> (Species-/Speciation-Area Relationship Projector) is an R package that provides a suite of functions to help users <strong>create speciation- and species- area relationships for island-dwelling taxa</strong> using occurrence data from GBIF (Global Biodiversity Information Facility) or the user’s own occurrence data.</p>
-<p>Species- and speciation-area relationships are useful for determining whether biodiversity is distributed in an unusual way in a given island system (e.g., species richness decreasing as islands get larger instead of increasing). An unusual trend in these relationships may be indicative of habitat loss or a negative impact of non-native species.</p>
+<p>The species-area relationship (SAR) is an important metric for quantifying patterns of biodiversity on islands within an island biogeographical framework. SARs visualize the relationship between species richness (the number of species) and the area of the island on which they live.</p>
+<p>Additionally, the potential for speciation on islands can be visualized using a speciation-area relationship (SpAR), which plots speciation rates against the area of the island on which the associated species live. Creating both a SAR and a SpAR for taxa on a given archipelago can help researchers answer questions about the drivers of biodiversity in their systems (e.g., Is there a threshold for island size at which point <em>in situ</em> speciation drives species richness in the archipelago?).</p>
+<p>SARs and SpARs are also useful for determining whether biodiversity is distributed in an unusual way in a given island system (e.g., species richness decreasing as islands get larger instead of increasing). An unusual trend in these relationships may be indicative of habitat loss or a negative impact of non-native species.</p>
 <p>Please find the <a href="https://www.biorxiv.org/content/10.1101/2024.12.31.630948v1" class="external-link">bioRxiv preprint of the manuscript associated with <em>ssarp</em> here!</a></p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -78,6 +80,17 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>ssarp.silent <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>before using any of <em>ssarp</em>’s functions.</p>
+</div>
+<div class="section level2">
+<h2 id="citing-ssarp">Citing ssarp<a class="anchor" aria-label="anchor" href="#citing-ssarp"></a>
+</h2>
+<p>Please cite <em>ssarp</em> if you use it for your work! The citation is:</p>
+<p>Martinet, K.M., Román-Palacios, C., &amp; Harmon, L.J. (2025). “SSARP: An R Package for Easily Creating Species- and Speciation- Area Relationships Using Web Databases.” <em>bioRxiv</em>. <a href="doi:10.1101/2024.12.31.630948" class="uri">doi:10.1101/2024.12.31.630948</a></p>
+</div>
+<div class="section level2">
+<h2 id="extending-your-sar-analysees">Extending Your SAR Analysees<a class="anchor" aria-label="anchor" href="#extending-your-sar-analysees"></a>
+</h2>
+<p>If you want a deeper exploration of SAR models once you’ve completed your analyses with <code>ssarp</code>, the <code><a href="reference/get_richness.html">ssarp::get_richness()</a></code> function can create a species richness dataframe for use in the <a href="https://txm676.github.io/sars/articles/sars-r-package.html" class="external-link">ars R package</a>. The <code>sars</code> package allows users to fit a wide variety of SAR models that <code>ssarp</code> does not create.</p>
 </div>
 <div class="section level2">
 <h2 id="example-creating-a-species-area-relationship">Example: Creating a Species-Area Relationship<a class="anchor" aria-label="anchor" href="#example-creating-a-species-area-relationship"></a>
