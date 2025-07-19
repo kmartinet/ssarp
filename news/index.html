@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">ssarp</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,6 +37,37 @@
       <small>Source: <a href="https://github.com/kmartinet/ssarp/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.4.0" id="ssarp-040-2025-07-19">ssarp 0.4.0 (2025-07-19)<a class="anchor" aria-label="anchor" href="#ssarp-040-2025-07-19"></a></h2>
+<div class="section level4">
+<h4 id="new-features-0-4-0">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-4-0"></a></h4>
+<ul><li>Package name is now <code>ssarp</code> instead of <code>SSARP</code>
+</li>
+<li>Added the <code><a href="../reference/get_richness.html">ssarp::get_richness()</a></code> function, which creates a standard species richness dataframe</li>
+<li>The <code>ssarp::get_data()</code> and <code>ssarp::get_key()</code> functions have been replaced by <a href="https://kmartinet.github.io/ssarp/articles/Get_Data.html">a helpful vignette describing how to access occurrence records</a> using <code>rgbif</code>.</li>
+<li>Messages across the package can be silenced using <code>options(ssarp.silent = TRUE)</code> now</li>
+<li>A new example file for testing <code><a href="../reference/estimate_BAMM.html">ssarp::estimate_BAMM</a></code> has been added (<code>inst/extdata/event_data_Patton_Anolis.txt</code>)</li>
+</ul></div>
+<div class="section level4">
+<h4 id="documentation-fixes-0-4-0">DOCUMENTATION FIXES<a class="anchor" aria-label="anchor" href="#documentation-fixes-0-4-0"></a></h4>
+<ul><li>All examples run instead of remaining in a <code>\dontrun</code> block</li>
+<li>More information about using the metadata from plots created with <code><a href="../reference/create_SAR.html">ssarp::create_SAR()</a></code> and <code><a href="../reference/create_SpAR.html">ssarp::create_SpAR()</a></code> has been added to their documentation</li>
+<li>More information about the speciation rate estimation methods in <code>ssarp</code> have been added to the <code><a href="../reference/create_SpAR.html">ssarp::create_SpAR()</a></code> documentation</li>
+</ul></div>
+<div class="section level4">
+<h4 id="other-fixes-0-4-0">OTHER FIXES<a class="anchor" aria-label="anchor" href="#other-fixes-0-4-0"></a></h4>
+<ul><li>New <code>testthat</code> test cases to ensure that calculations are done correctly across the package</li>
+<li>Column names have been standardized across the package</li>
+<li>Plot printing is now off by default in <code><a href="../reference/create_SAR.html">ssarp::create_SAR()</a></code> and <code><a href="../reference/create_SpAR.html">ssarp::create_SpAR()</a></code>
+</li>
+</ul></div>
+<div class="section level4">
+<h4 id="deprecated-functions-0-4-0">DEPRECATED FUNCTIONS<a class="anchor" aria-label="anchor" href="#deprecated-functions-0-4-0"></a></h4>
+<ul><li><code>get_data()</code></li>
+<li><code>get_key()</code></li>
+<li><code>quick_create_SAR()</code></li>
+</ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.0" id="ssarp-030-2025-07-04">SSARP 0.3.0 (2025-07-04)<a class="anchor" aria-label="anchor" href="#ssarp-030-2025-07-04"></a></h2>
 <div class="section level4">

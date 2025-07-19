@@ -11,7 +11,7 @@ log(speciation rate)"></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">ssarp</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -86,13 +86,15 @@ used in model selection</p>
 <code>ssarp::create_SpAR()</code> output, the <code>aggDF</code> element of the returned list
 includes the raw points from the plot created here. They can be accessed
 as demonstrated in the Examples section.</p>
+<p>More information about the three methods for estimating speciation rate
+included in <code>ssarp</code> can be found in <a href="https://kmartinet.github.io/ssarp/articles/Create_SpAR.html">ssarp's SpAR vignette</a>.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># The GBIF key for the Anolis genus is 8782549</span></span></span>
 <span class="r-in"><span><span class="co"># Read in example dataset filtered from:</span></span></span>
-<span class="r-in"><span><span class="co">#  dat &lt;- rgbif::occ_search(taxonKey = 8782549, </span></span></span>
+<span class="r-in"><span><span class="co">#  dat &lt;- rgbif::occ_search(taxonKey = 8782549,</span></span></span>
 <span class="r-in"><span><span class="co">#                           hasCoordinate = TRUE,</span></span></span>
 <span class="r-in"><span><span class="co">#                           limit = 10000)</span></span></span>
 <span class="r-in"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span></span>
@@ -116,7 +118,7 @@ as demonstrated in the Examples section.</p>
 <span class="r-in"><span>                              occurrences <span class="op">=</span> <span class="va">areas</span><span class="op">)</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'areas' not found</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">seg</span> <span class="op">&lt;-</span> <span class="fu">create_SpAR</span><span class="op">(</span>occurrences <span class="op">=</span> <span class="va">occ_speciation</span>, </span></span>
+<span class="r-in"><span><span class="va">seg</span> <span class="op">&lt;-</span> <span class="fu">create_SpAR</span><span class="op">(</span>occurrences <span class="op">=</span> <span class="va">occ_speciation</span>,</span></span>
 <span class="r-in"><span>                   npsi <span class="op">=</span> <span class="fl">1</span>,</span></span>
 <span class="r-in"><span>                   visualize <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'occ_speciation' not found</span>
