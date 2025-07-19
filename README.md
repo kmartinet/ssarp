@@ -20,8 +20,21 @@ provides a suite of functions to help users **create speciation- and species-
 area relationships for island-dwelling taxa** using occurrence data from GBIF
 (Global Biodiversity Information Facility) or the user's own occurrence data. 
 
-Species- and speciation-area relationships are useful for determining whether
-biodiversity is distributed in an unusual way in a given island system 
+The species-area relationship (SAR) is an important metric for quantifying
+patterns of biodiversity on islands within an island biogeographical framework.
+SARs visualize the relationship between species richness (the number of species)
+and the area of the island on which they live.
+
+Additionally, the potential for speciation on islands can be visualized using
+a speciation-area relationship (SpAR), which plots speciation rates against
+the area of the island on which the associated species live. Creating both a
+SAR and a SpAR for taxa on a given archipelago can help researchers answer 
+questions about the drivers of biodiversity in their systems 
+(e.g., Is there a threshold for island size at which point _in situ_ 
+speciation drives species richness in the archipelago?).
+
+SARs and SpARs are also useful for determining whether biodiversity is distributed 
+in an unusual way in a given island system 
 (e.g., species richness decreasing as islands get larger instead of 
 increasing). An unusual trend in these relationships may be indicative of 
 habitat loss or a negative impact of non-native species.
