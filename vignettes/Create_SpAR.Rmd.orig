@@ -67,7 +67,15 @@ tree <- read.tree(system.file("extdata",
 ```
 ![Phylogenetic tree from Patton et al. (2021) trimmed to include only anoles found on islands in the Caribbean.](anolis_tree.png)
 
-Now that we have a phylogenetic tree, we can estimate tip speciation rates for use in our speciation-area relationship. *ssarp* includes three methods for estimating tip speciation rates: BAMM (Rabosky 2014), the lambda calculation for crown groups from Magallόn and Sanderson (2001), and DR (Jetz et al. 2012). In this example, we will use the lambda calculation for crown groups from Magallόn and Sanderson (2001) through the `ssarp::estimate_MS()` function. The "label_type" parameter in this function tells *ssarp* whether the tip labels on the given tree include the full species name (binomial) or just the specific epithet (epithet).
+Now that we have a phylogenetic tree, we can estimate tip speciation rates for use in our speciation-area relationship. *ssarp* includes three methods for estimating tip speciation rates: BAMM (Rabosky 2014), the lambda calculation for crown groups from Magallόn and Sanderson (2001), and DR (Jetz et al. 2012). 
+
+The `ssarp::estimate_BAMM` function requires a `bammdata` object as input, which must be created using the `BAMMtools` package (Rabosky et al. 2014) after the user completes a BAMM analysis. This object includes tip speciation rates by default in the “meanTipLambda” list element, which `ssarp` accesses to add the appropriate tip speciation rates for each species to the occurrence record dataframe. 
+
+DR stands for “diversification rate,” but it is ultimately a better estimation of speciation rate than net diversification (Belmaker and Jetz 2015; Quintero and Jetz 2018) and returns results similar to BAMM’s tip speciation rate estimations (Title and Rabosky 2019). The `ssarp::estimate_DR` function returns the values obtained from running an adapted version of the “DR_statistic” function from Sun and Folk (2020).
+
+In addition to tip speciation rates, SSARP includes a function for calculating the speciation rate for a clade from Magallόn and Sanderson (2001). The `ssarp::estimate_speciation` function uses the `ape::subtrees` function (Paradis and Schliep 2019) to generate all possible subtrees from the user-provided phylogenetic tree that corresponds with the taxa of interest for the SpAR. Then, species in the provided occurrence records generated from previous steps in the `ssarp` workflow are grouped by island. For each group of species that comprise an island, the number of subtrees that represent that group of species and the root age of each subtree is recorded, along with the name and area of the island. The speciation rate for each subtree is then calculated following Equation 4 in Magallόn and Sanderson (2001). If an island includes multiple subtrees, the island speciation rate is the average of the calculated speciation rates. This average is calculated when the SpAR is plotted.
+
+In this example, we will use the lambda calculation for crown groups from Magallόn and Sanderson (2001) through the `ssarp::estimate_MS()` function. The "label_type" parameter in this function tells *ssarp* whether the tip labels on the given tree include the full species name (binomial) or just the specific epithet (epithet).
 
 ```{r }
 # Calculate tip speciation rates using the lambda calculation for crown groups from Magallόn and Sanderson (2001)
@@ -92,8 +100,14 @@ You will notice that two of the largest islands have a speciation rate of zero i
 
 ### Literature Cited
 
+* Belmaker, J., & Jetz, W. (2015). Relative roles of ecological and energetic constraints, diversification rates and region history on global species richness gradients. Ecology Letters, 18: 563–571.
 * Jetz, W., Thomas, G.H., Joy, J.B., Hartmann, K., & Mooers, A.O. (2012). The global diversity of birds in space and time. Nature, 491: 444-448.
 * Losos, J.B. & Schluter, D. (2000). Analysis of an evolutionary species-area relationship. Nature, 408: 847-850.
 * Magallόn, S. & Sanderson, M.J. (2001). Absolute Diversification Rates in Angiosperm Clades. Evolution, 55(9): 1762-1780.
+* Paradis, E. & Schliep, K. (2019). ape 5.0: an environment for modern phylogenetics and evolutionary analyses in R. Bioinformatics, 35: 526-528.
 * Patton, A.H., Harmon, L.J., del Rosario Castañeda, M., Frank, H.K., Donihue, C.M., Herrel, A., & Losos, J.B. (2021). When adaptive radiations collide: Different evolutionary trajectories between and within island and mainland lizard clades. PNAS, 118(42): e2024451118.
+* Quintero, I., & Jetz, W. (2018). Global elevational diversity and diversification of birds. Nature, 555, 246–250.
 * Rabosky, D.L. (2014). Automatic Detection of Key Innovations, Rate Shifts, and Diversity-Dependence on Phylogenetic Trees. PLOS ONE, 9(2): e89543.
+* Rabosky, D.L., Grundler, M., Anderson, C., Title, P., Shi, J.J., Brown, J.W., Huang, H., & Larson, J.G. (2014), BAMMtools: an R package for the analysis of evolutionary dynamics on phylogenetic trees. Methods in Ecology and Evolution, 5: 701-707.
+* Sun, M. & Folk, R.A. (2020). Cactusolo/rosid_NCOMMS-19-37964-T: Code and data for rosid_NCOMMS-19-37964 (Version V.1.0). Zenodo. http://doi.org/10.5281/zenodo.3843441
+* Title P.O. & Rabosky D.L. (2019). Tip rates, phylogenies and diversification: What are we estimating, and how good are the estimates? Methods in Ecology and Evolution. 10: 821–834.

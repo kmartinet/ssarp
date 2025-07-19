@@ -1,3 +1,34 @@
+ssarp 0.4.0 (2025-07-19)
+=========================
+
+### NEW FEATURES
+
+  * Package name is now `ssarp` instead of `SSARP`
+  * Added the `ssarp::get_richness()` function, which creates a standard species richness dataframe
+  * The `ssarp::get_data()` and `ssarp::get_key()` functions have been replaced by [a helpful vignette describing how to access occurrence records](https://kmartinet.github.io/ssarp/articles/Get_Data.html) using `rgbif`.
+  * Messages across the package can be silenced using `options(ssarp.silent = TRUE)` now
+  * A new example file for testing `ssarp::estimate_BAMM` has been added (`inst/extdata/event_data_Patton_Anolis.txt`)
+  
+### DOCUMENTATION FIXES
+
+  * All examples run instead of remaining in a `\dontrun` block
+  * More information about using the metadata from plots created with `ssarp::create_SAR()` and `ssarp::create_SpAR()` has been added to their documentation
+  * More information about the speciation rate estimation methods in `ssarp` have been added to the `ssarp::create_SpAR()` documentation
+  
+  
+### OTHER FIXES
+  
+  * New `testthat` test cases to ensure that calculations are done correctly across the package
+  * Column names have been standardized across the package
+  * Plot printing is now off by default in `ssarp::create_SAR()` and `ssarp::create_SpAR()`
+  
+### DEPRECATED FUNCTIONS
+  
+  * `get_data()`
+  * `get_key()`
+  * `quick_create_SAR()`
+
+
 SSARP 0.3.0 (2025-07-04)
 =========================
 

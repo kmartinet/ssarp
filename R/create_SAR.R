@@ -3,8 +3,8 @@
 #' Use segmented regression to create a species-area relationship (SAR) plot.
 #' The X axis represents log(island area) and the Y axis represents log(number
 #' of species)
-#' 
-#' If the user would prefer to create their own plot of the 
+#'
+#' If the user would prefer to create their own plot of the
 #' `ssarp::create_SAR()` output, the `aggDF` element of the returned list
 #' includes the raw points from the plot created here. They can be accessed
 #' as demonstrated in the Examples section.
@@ -13,7 +13,7 @@
 #' specificEpithet, areas)
 #' @param npsi The maximum number of breakpoints to estimate for model
 #' selection.  Default: 1
-#' @param visualize (boolean) Whether the plot should be displayed when the 
+#' @param visualize (boolean) Whether the plot should be displayed when the
 #' function is called. Default: FALSE
 #' @return A list of 4 including: the summary output, the regression
 #' object, the aggregated dataframe used to create the plot, and the AIC scores
@@ -21,7 +21,7 @@
 #' @examples
 #' # The GBIF key for the Anolis genus is 8782549
 #' # Read in example dataset filtered from:
-#' #  dat <- rgbif::occ_search(taxonKey = 8782549, 
+#' #  dat <- rgbif::occ_search(taxonKey = 8782549,
 #' #                           hasCoordinate = TRUE,
 #' #                           limit = 10000)
 #' dat <- read.csv(system.file("extdata",
@@ -104,7 +104,7 @@ create_SAR <- function(occurrences, npsi = 1, visualize = FALSE) {
   # If the min_score is index 1, then the best-fit model is linear
   if (min_score == 1) {
     # Plot linear regression (if the user wants)
-    if(visualize){
+    if (visualize) {
       plot(
         dat,
         xlim = c(x_min, (x_max + 0.5)),
@@ -143,7 +143,7 @@ create_SAR <- function(occurrences, npsi = 1, visualize = FALSE) {
     )
 
     # Plot the breakpoint regression line (if user wants)
-    if(visualize){
+    if (visualize) {
       plot(
         seg,
         rug = FALSE,
@@ -186,7 +186,7 @@ create_SAR <- function(occurrences, npsi = 1, visualize = FALSE) {
 
     # Plot defaults to multiple outputs when npsi > 1, so my npsi = 1 plot
     #  doesn't apply
-    if(visualize){
+    if (visualize) {
       plot(seg)
     }
 

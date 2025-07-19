@@ -25,7 +25,7 @@
 #' @examples
 #' # The GBIF key for the Anolis genus is 8782549
 #' # Read in example dataset filtered from:
-#' #  dat <- rgbif::occ_search(taxonKey = 8782549, 
+#' #  dat <- rgbif::occ_search(taxonKey = 8782549,
 #' #                           hasCoordinate = TRUE,
 #' #                           limit = 10000)
 #' dat <- read.csv(system.file("extdata",
@@ -62,12 +62,9 @@ find_land <- function(occurrences, fillgaps = FALSE) {
   #  any type, really
 
   # Check if there is anything in the given occurrences
-  # If not, return NULL to stop the function call
+  # If not, return an error
   if (nrow(occurrences) == 0) {
-    if(!getOption("ssarp.silent", FALSE)){
-      cli::cli_alert_warning("Occurrence record dataframe has no entries")
-    }
-    return(NULL)
+    stop("Occurrence record dataframe has no entries", call. = FALSE)
   }
 
   lon <- as.numeric(occurrences$decimalLongitude)
@@ -121,12 +118,12 @@ find_land <- function(occurrences, fillgaps = FALSE) {
   if (fillgaps == TRUE) {
     # There might still be a lot of NA entries, so use Photon to try to
     #  fill in gaps
-    if(!getOption("ssarp.silent", FALSE)){
+    if (!getOption("ssarp.silent", FALSE)) {
       cli::cli_alert_info("Filling gaps using Photon...")
     }
     for (i in seq_len(nrow(occs))) {
       if (nrow(occs) == 0) {
-        if(!getOption("ssarp.silent", FALSE)){
+        if (!getOption("ssarp.silent", FALSE)) {
           cli::cli_alert_warning("Occurrence record dataframe has no entries")
         }
         break

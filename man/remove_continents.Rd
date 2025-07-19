@@ -24,7 +24,7 @@ output by \code{ssarp::find_areas()}.
 \examples{
 # The GBIF key for the Anolis genus is 8782549
 # Read in example dataset filtered from:
-#  dat <- rgbif::occ_search(taxonKey = 8782549, 
+#  dat <- rgbif::occ_search(taxonKey = 8782549,
 #                           hasCoordinate = TRUE,
 #                           limit = 10000)
 dat <- read.csv(system.file("extdata",

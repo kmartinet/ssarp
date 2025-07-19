@@ -45,7 +45,7 @@
 #' @examples
 #' # The GBIF key for the Anolis genus is 8782549
 #' # Read in example dataset filtered from:
-#' #  dat <- rgbif::occ_search(taxonKey = 8782549, 
+#' #  dat <- rgbif::occ_search(taxonKey = 8782549,
 #' #                           hasCoordinate = TRUE,
 #' #                           limit = 10000)
 #' dat <- read.csv(system.file("extdata",
@@ -80,7 +80,7 @@ estimate_DR <- function(tree, label_type = "binomial", occurrences) {
   #  estimate_DR documentation)
   rootnode <- length(tree$tip.label) + 1
   speciation_rates <- numeric(length(tree$tip.label))
-  for (i in seq_len(length(speciation_rates))) {
+  for (i in seq_along(speciation_rates)) {
     node <- i
     index <- 1
     qx <- 0

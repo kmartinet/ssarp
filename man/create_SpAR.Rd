@@ -33,11 +33,14 @@ If the user would prefer to create their own plot of the
 \code{ssarp::create_SpAR()} output, the \code{aggDF} element of the returned list
 includes the raw points from the plot created here. They can be accessed
 as demonstrated in the Examples section.
+
+More information about the three methods for estimating speciation rate
+included in \code{ssarp} can be found in \href{https://kmartinet.github.io/ssarp/articles/Create_SpAR.html}{ssarp's SpAR vignette}.
 }
 \examples{
 # The GBIF key for the Anolis genus is 8782549
 # Read in example dataset filtered from:
-#  dat <- rgbif::occ_search(taxonKey = 8782549, 
+#  dat <- rgbif::occ_search(taxonKey = 8782549,
 #                           hasCoordinate = TRUE,
 #                           limit = 10000)
 dat <- read.csv(system.file("extdata",
@@ -55,7 +58,7 @@ occ_speciation <- estimate_MS(tree = tree,
                               label_type = "epithet",
                               occurrences = areas)
 
-seg <- create_SpAR(occurrences = occ_speciation, 
+seg <- create_SpAR(occurrences = occ_speciation,
                    npsi = 1,
                    visualize = FALSE)
 plot(seg)

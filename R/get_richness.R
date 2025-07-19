@@ -1,12 +1,12 @@
 #' Create a species richness dataframe for a given occurrence record dataframe
 #'
-#' Use a dataframe output by `ssarp::find_areas()` to determine how many 
+#' Use a dataframe output by `ssarp::find_areas()` to determine how many
 #' species occur on each island by creating a species richness dataframe.
-#' 
-#' The output of this function can be used directly with 
+#'
+#' The output of this function can be used directly with
 #' [the sars R package](https://txm676.github.io/sars/articles/sars-r-package.html)
 #' to fit additional SAR models that `ssarp` does not create itself.
-#' 
+#'
 #' @param occs The dataframe output by `ssarp::find_areas()`, or if using a
 #' custom dataframe, ensure that it has the following named columns:
 #' - "areas" containing the areas associated with the land masses of interest
@@ -18,7 +18,7 @@
 #' @examples
 #' # The GBIF key for the Anolis genus is 8782549
 #' # Read in example dataset filtered from:
-#' #  dat <- rgbif::occ_search(taxonKey = 8782549, 
+#' #  dat <- rgbif::occ_search(taxonKey = 8782549,
 #' #                           hasCoordinate = TRUE,
 #' #                           limit = 10000)
 #' dat <- read.csv(system.file("extdata",
@@ -49,8 +49,8 @@ get_richness <- function(occs) {
     specificEpithet ~ areas,
     function(x) length(unique(x))
   )
-  
+
   colnames(agg) <- c("Area", "Richness")
-  
+
   return(agg)
 }

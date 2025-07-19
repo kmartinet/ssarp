@@ -69,7 +69,7 @@ test_that("The find_land function returns a dataframe", {
 
 test_that("When occurrence record dataframe input has no rows, 
           expect a warning message", {
-  expect_message(find_land(occs), "Occurrence record dataframe has no entries")
+  expect_error(find_land(occs))
 })
 
 if (!curl::has_internet()) {
