@@ -62,6 +62,15 @@ options(ssarp.silent = TRUE)
 
 before using any of *ssarp*'s functions.
 
+## Citing ssarp
+
+Please cite *ssarp* if you use it for your work! The citation is:
+
+Martinet, K.M., Román-Palacios, C., & Harmon, L.J. (2025). 
+“SSARP: An R Package for Easily Creating Species- and
+Speciation- Area Relationships Using Web Databases.” _bioRxiv_. 
+doi:10.1101/2024.12.31.630948
+
 ## Example: Creating a Species-Area Relationship
 
 A species-area relationship (SAR) visualizes the relationship between
