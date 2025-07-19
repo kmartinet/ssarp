@@ -75,7 +75,7 @@ doi:10.1101/2024.12.31.630948
 
 If you want a deeper exploration of SAR models once you've completed your
 analyses with `ssarp`, the `ssarp::get_richness()` function can create a
-species richness dataframe for use in the [ars R package](https://txm676.github.io/sars/articles/sars-r-package.html).
+species richness dataframe for use in the [sars R package](https://txm676.github.io/sars/articles/sars-r-package.html).
 The `sars` package allows users to fit a wide variety of SAR models that `ssarp` 
 does not create.
 
