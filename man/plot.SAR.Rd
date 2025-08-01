@@ -9,7 +9,7 @@
 \arguments{
 \item{x}{The SAR object that will be plotted}
 
-\item{...}{Functions to pass to plot()}
+\item{...}{Parameters to pass to plot()}
 }
 \value{
 A plot of your species-area relationship
