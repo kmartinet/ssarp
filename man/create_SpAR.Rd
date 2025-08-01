@@ -19,9 +19,10 @@ selection.  Default: 1}
 function is called. Default: FALSE}
 }
 \value{
-A list of 4 including: the summary output, the regression
-object, the aggregated dataframe used to create the plot, and the AIC scores
-used in model selection
+A list of 5 including: the summary output, the regression
+object for the best-fit model, the aggregated dataframe used to create the
+plot, the AIC scores used in model selection,
+and all of the models created in model selection
 }
 \description{
 Use segmented regression to create a speciation-area relationship plot. The

@@ -21,13 +21,6 @@ First, we will generate the "nocont_dat" object from the SAR vignette, which inc
 
 ``` r
 library(rgbif)
-```
-
-```
-## Warning: package 'rgbif' was built under R version 4.4.3
-```
-
-``` r
 library(ssarp)
 
 # Get the GBIF key for the Anolis genus
@@ -67,20 +60,7 @@ The phylogenetic tree for *Anolis* that we will use in this example is a trimmed
 
 ``` r
 library(ape)
-```
 
-```
-## 
-## Attaching package: 'ape'
-```
-
-```
-## The following objects are masked from 'package:terra':
-## 
-##     rotate, trans, zoom
-```
-
-``` r
 tree <- read.tree(system.file("extdata", 
                               "Patton_Anolis_trimmed.tree", 
                               package = "ssarp"))
