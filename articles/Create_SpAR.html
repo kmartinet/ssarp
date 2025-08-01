@@ -89,10 +89,8 @@ vignette, which includes occurrence records and their associated island
 names and areas for <em>Anolis</em> lizards that live on Caribbean
 islands.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/rgbif" class="external-link">rgbif</a></span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Warning: package 'rgbif' was built under R version 4.4.3</span></span></code></pre>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/kmartinet/ssarp" class="external-link">ssarp</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/rgbif" class="external-link">rgbif</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/kmartinet/ssarp" class="external-link">ssarp</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Get the GBIF key for the Anolis genus</span></span>
 <span><span class="va">query</span> <span class="op">&lt;-</span> <span class="st">"Anolis"</span></span>
@@ -133,15 +131,10 @@ example is a trimmed version of the tree used by Patton et al. (2021).
 This trimmed tree only includes anoles found on islands in the
 Caribbean. In order to read the tree, we must use the <em>ape</em> R
 package.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/emmanuelparadis/ape" class="external-link">ape</a></span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## </span></span>
-<span><span class="co">## Attaching package: 'ape'</span></span></code></pre>
-<pre><code><span><span class="co">## The following objects are masked from 'package:terra':</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">##     rotate, trans, zoom</span></span></code></pre>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">tree</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ape/man/read.tree.html" class="external-link">read.tree</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, </span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/emmanuelparadis/ape" class="external-link">ape</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">tree</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ape/man/read.tree.html" class="external-link">read.tree</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, </span>
 <span>                              <span class="st">"Patton_Anolis_trimmed.tree"</span>, </span>
 <span>                              package <span class="op">=</span> <span class="st">"ssarp"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="float">
@@ -188,7 +181,7 @@ from Magallόn and Sanderson (2001) through the
 in this function tells <em>ssarp</em> whether the tip labels on the
 given tree include the full species name (binomial) or just the specific
 epithet (epithet).</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Calculate tip speciation rates using the lambda calculation for crown groups from Magallόn and Sanderson (2001)</span></span>
 <span><span class="va">speciation_occurrences</span> <span class="op">&lt;-</span> <span class="fu">ssarp</span><span class="fu">::</span><span class="fu"><a href="../reference/estimate_MS.html">estimate_MS</a></span><span class="op">(</span>tree <span class="op">=</span> <span class="va">tree</span>, label_type <span class="op">=</span> <span class="st">"epithet"</span>, occurrences <span class="op">=</span> <span class="va">nocont_dat</span><span class="op">)</span></span></code></pre></div>
 <p>The “speciation_occurrences” object is a dataframe containing island
@@ -210,7 +203,7 @@ the lowest AIC score. The “npsi” parameter will be set to one in this
 example. Note that if linear regression (zero breakpoints) is
 better-supported than segmented regression with one breakpoint, the
 linear regression will be returned instead.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ssarp</span><span class="fu">::</span><span class="fu"><a href="../reference/create_SpAR.html">create_SpAR</a></span><span class="op">(</span>occurrences <span class="op">=</span> <span class="va">speciation_occurrences</span>, npsi <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">##  ***Regression Model with Segmented Relationship(s)***</span></span>
