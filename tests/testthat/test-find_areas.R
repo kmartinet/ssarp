@@ -124,4 +124,3 @@ test_that("Inputting something other than a shapefile in 'shapefile' will
             expect_error(find_areas(occs = occs_spat,
                                     shapefile = 1))
 })
-

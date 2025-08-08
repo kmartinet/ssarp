@@ -21,7 +21,7 @@
 #'
 #' @param occs The dataframe that is returned by `ssarp::find_land()`. If using
 #' a custom occurrence record dataframe, ensure that it has the following
-#' columns: "acceptedScientificName", "genericName", "specificEpithet",
+#' columns: "genericName", "specificEpithet",
 #' "decimalLongitude", "decimalLatitude", "First", "Second", "Third",
 #' "datasetKey". The "datasetKey" column is important for GBIF records and
 #' identifies the dataset to which the occurrence record belongs. Custom
@@ -63,11 +63,8 @@ find_areas <- function(
   checkmate::assertDataFrame(occs)
   checkmate::testSubset(
     c(
-      "acceptedScientificName",
       "genericName",
       "specificEpithet",
-      "decimalLongitude",
-      "decimalLatitude",
       "First",
       "Second",
       "Third",
@@ -75,12 +72,23 @@ find_areas <- function(
     ),
     names(occs)
   )
-  # Ensure columns are correct type
-  checkmate::assertCharacter(occs$acceptedScientificName)
+  # If a shapefile is input, ensure that longitude and latitude are in occs
+  if(!is.null(shapefile)){
+    checkmate::testSubset(
+      c(
+        "decimalLongitude",
+        "decimalLatitude"
+      ),
+      names(occs)
+    )
+    # And ensure that they're numeric
+    checkmate::assertNumeric(occs$decimalLongitude)
+    checkmate::assertNumeric(occs$decimalLatitude)
+  }
+  
+  # Ensure other columns are correct type
   checkmate::assertCharacter(occs$genericName)
   checkmate::assertCharacter(occs$specificEpithet)
-  checkmate::assertNumeric(occs$decimalLongitude)
-  checkmate::assertNumeric(occs$decimalLatitude)
   checkmate::assertCharacter(occs$First)
   checkmate::assertCharacter(occs$Second)
   checkmate::assertCharacter(occs$Third)
