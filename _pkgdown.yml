@@ -23,6 +23,7 @@ reference:
   - find_land
   - find_areas
   - remove_continents
+  - find_pam_areas
 
 - title: Estimate Speciation Rates
   contents:
