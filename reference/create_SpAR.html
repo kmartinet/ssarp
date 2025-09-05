@@ -76,11 +76,14 @@ function is called. Default: FALSE</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A list of 5 including: the summary output, the regression
-object for the best-fit model, the aggregated dataframe used to create the
-plot, the AIC scores used in model selection,
-and all of the models created in model selection</p>
-    </div>
+    <p>A list of class SAR with 5 items including:</p><ul><li><p><code>summary</code>: the summary output</p></li>
+<li><p><code>segObj</code> or <code>linObj</code>: the regression object (<code>segObj</code> when segmented,
+<code>linObj</code> when linear)</p></li>
+<li><p><code>aggDF</code>: the aggregated dataframe used to create the plot</p></li>
+<li><p><code>AICscores</code>: the AIC scores generated during model selection</p></li>
+<li><p><code>AllModels</code>: a list of models created in model selection, labeled by
+number of breakpoints</p></li>
+</ul></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>If the user would prefer to create their own plot of the
