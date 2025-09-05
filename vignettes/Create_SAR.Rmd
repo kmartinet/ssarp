@@ -105,7 +105,7 @@ head(area_dat, n = 5)
 ```
 Now, our occurrence record dataframe includes records with GPS points that are associated with a land mass, along with the areas of those land masses (in m^2).
 
-The `ssarp::remove_continents()` function removes any continental occurrence records, which is useful when the user is only interested in island-dwelling species (as we are in this example). While the data obtained by using the `ssarp::get_data()` function was geographically restricted, potential user error in specifying the polygon in WKT format often leads to accidental continental records that will be removed by using this function.
+The `ssarp::remove_continents()` function removes any continental occurrence records, which is useful when the user is only interested in island-dwelling species (as we are in this example). While the data obtained by using the `rgbif::occ_search()` function was geographically restricted, potential user error in specifying the polygon in WKT format often leads to accidental continental records that will be removed by using this function.
 
 
 ``` r

@@ -1,17 +1,17 @@
 #' Gather sources from GBIF data for citation
 #'
-#' When using data obtained via `ssarp::get_data()` and filtered with
+#' When using data obtained via `rgbif::occ_search()` and filtered with
 #' `ssarp::find_areas()` for a publication, you must keep a record of the
 #' datasets used in your analysis. This function assists in creating the
 #' dataframe necessary to follow GBIF's citation guidelines (see References).
-#' @param occs The occurrence record dataframe returned by `ssarp::get_data()`
+#' @param occs The occurrence record dataframe returned by `rgbif::occ_search()`
 #' or `ssarp::find_areas()`.
 #' @return A dataframe of dataset keys and the number of occurrence records
-#' associated with each key that were gathered with `ssarp::get_data()` and/or
+#' associated with each key that were gathered with `rgbif::occ_search()` and/or
 #' filtered with `ssarp::find_areas()`.
 #' @references
 #' - [GBIF citation guidelines](https://www.gbif.org/citation-guidelines)
-#' - Data obtained via `ssarp::get_data()` and filtered with
+#' - Data obtained via `rgbif::occ_search()` and filtered with
 #' `ssarp::find_areas()` falls under [the derived datasets distinction](https://www.gbif.org/derived-dataset/about)
 #' - [More information about creating derived datasets](https://data-blog.gbif.org/post/derived-datasets/)
 #' @examples

@@ -2,7 +2,8 @@
 #'
 #' Use various mapping tools to attempt to find the names of land masses where
 #' the occurrence points were found.
-#' @param occurrences The dataframe output by `ssarp::get_data()` (or if using
+#' @param occurrences A dataframe output by `rgbif::occ_search()` or 
+#' `rgbif::occ_download()` (or if using
 #' a custom dataframe, ensure that it has the following columns:
 #' decimalLongitude, decimalLatitude, acceptedScientificName, genericName,
 #' specificEpithet, datasetKey). The "datasetKey" column is important for GBIF

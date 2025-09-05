@@ -7,7 +7,8 @@
 find_land(occurrences, fillgaps = FALSE)
 }
 \arguments{
-\item{occurrences}{The dataframe output by \code{ssarp::get_data()} (or if using
+\item{occurrences}{A dataframe output by \code{rgbif::occ_search()} or
+\code{rgbif::occ_download()} (or if using
 a custom dataframe, ensure that it has the following columns:
 decimalLongitude, decimalLatitude, acceptedScientificName, genericName,
 specificEpithet, datasetKey). The "datasetKey" column is important for GBIF
