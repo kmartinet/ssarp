@@ -15,10 +15,14 @@
 #' selection.  Default: 1
 #' @param visualize (boolean) Whether the plot should be displayed when the
 #' function is called. Default: FALSE
-#' @return A list of 5 including: the summary output, the regression
-#' object for the best-fit model, the aggregated dataframe used to create the 
-#' plot, the AIC scores used in model selection, 
-#' and all of the models created in model selection
+#' @return A list of class SAR with 5 items including:
+#' * `summary`: the summary output
+#' * `segObj` or `linObj`: the regression object (`segObj` when segmented,
+#' `linObj` when linear)
+#' * `aggDF`: the aggregated dataframe used to create the plot
+#' * `AICscores`: the AIC scores generated during model selection
+#' * `AllModels`: a list of models created in model selection, labeled by
+#' number of breakpoints
 #' @examples
 #' # The GBIF key for the Anolis genus is 8782549
 #' # Read in example dataset filtered from:

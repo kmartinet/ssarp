@@ -18,10 +18,16 @@ selection.  Default: 1}
 function is called. Default: FALSE}
 }
 \value{
-A list of 5 including: the summary output, the regression
-object for the best-fit model, the aggregated dataframe used to create the
-plot, the AIC scores used in model selection,
-and all of the models created in model selection
+A list of class SAR with 5 items including:
+\itemize{
+\item \code{summary}: the summary output
+\item \code{segObj} or \code{linObj}: the regression object (\code{segObj} when segmented,
+\code{linObj} when linear)
+\item \code{aggDF}: the aggregated dataframe used to create the plot
+\item \code{AICscores}: the AIC scores generated during model selection
+\item \code{AllModels}: a list of models created in model selection, labeled by
+number of breakpoints
+}
 }
 \description{
 Use segmented regression to create a species-area relationship (SAR) plot.
