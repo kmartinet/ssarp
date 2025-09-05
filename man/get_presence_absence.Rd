@@ -13,11 +13,11 @@ custom dataframe, ensure that it has the following named columns:
 \item "areas" containing the areas associated with the land masses of interest
 \item "specificEpithet" containing the names of the species living on those
 islands
-\item "First" containing locality information. In the ssarp workflow, this
+\item "first" containing locality information. In the ssarp workflow, this
 column contains the country name
-\item "Second" containing locality information. In the ssarp workflow, this
+\item "second" containing locality information. In the ssarp workflow, this
 column contains a province or island name
-\item "Third" containing locality information. In the ssarp workflow, this
+\item "third" containing locality information. In the ssarp workflow, this
 column contains the island name if the 7th column does not contain the
 island name
 }}

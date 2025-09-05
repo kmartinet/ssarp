@@ -22,7 +22,7 @@
 #' @param occs The dataframe that is returned by `ssarp::find_land()`. If using
 #' a custom occurrence record dataframe, ensure that it has the following
 #' columns: "genericName", "specificEpithet",
-#' "decimalLongitude", "decimalLatitude", "First", "Second", "Third",
+#' "decimalLongitude", "decimalLatitude", "first", "second", "third",
 #' "datasetKey". The "datasetKey" column is important for GBIF records and
 #' identifies the dataset to which the occurrence record belongs. Custom
 #' dataframes without this style of data organization should fill the column
@@ -65,9 +65,9 @@ find_areas <- function(
     c(
       "genericName",
       "specificEpithet",
-      "First",
-      "Second",
-      "Third",
+      "first",
+      "second",
+      "third",
       "datasetKey"
     ),
     names(occs)
@@ -89,9 +89,9 @@ find_areas <- function(
   # Ensure other columns are correct type
   checkmate::assertCharacter(occs$genericName)
   checkmate::assertCharacter(occs$specificEpithet)
-  checkmate::assertCharacter(occs$First)
-  checkmate::assertCharacter(occs$Second)
-  checkmate::assertCharacter(occs$Third)
+  checkmate::assertCharacter(occs$first)
+  checkmate::assertCharacter(occs$second)
+  checkmate::assertCharacter(occs$third)
   # Not checking datasetKey because it is not relevant to the code and can be
   #  any type, really
 
@@ -100,7 +100,7 @@ find_areas <- function(
     # Remove any rows where the "specificEpithet" column is NA
     occs <- occs[!is.na(occs$specificEpithet), ]
 
-    # Remove rows where First, Second, and Third are all NA
+    # Remove rows where first, second, and third are all NA
     # Create vector to hold row numbers
     minus <- rep(NA, nrow(occs))
     # Loop through dataframe
@@ -112,9 +112,9 @@ find_areas <- function(
         break
       }
       if (
-        is.na(occs[i, "Third"]) &&
-          is.na(occs[i, "Second"]) &&
-          is.na(occs[i, "First"])
+        is.na(occs[i, "third"]) &&
+          is.na(occs[i, "second"]) &&
+          is.na(occs[i, "first"])
       ) {
         minus[i] <- i
       }
@@ -139,9 +139,10 @@ find_areas <- function(
     # First, create an empty list of island names
     islands <- list()
 
-    # Next, go through the occs dataframe and see if the Third column has a name.
-    # If yes, add to the island list. If NA, go to the Second column.
-    # If Second column is NA, go to the First column.
+    # Next, go through the occs dataframe and see if the 'third' column 
+    #  has a name.
+    # If yes, add to the island list. If NA, go to the 'second' column.
+    # If 'second' column is NA, go to the 'first' column.
     if (!getOption("ssarp.silent", FALSE)) {
       cli::cli_alert_info("Recording island names...")
     }
@@ -152,12 +153,12 @@ find_areas <- function(
         }
         break
       }
-      if (!is.na(occs[i, "Third"])) {
-        islands[i] <- occs[i, "Third"]
-      } else if (!is.na(occs[i, "Second"])) {
-        islands[i] <- occs[i, "Second"]
-      } else if (!is.na(occs[i, "First"])) {
-        islands[i] <- occs[i, "First"]
+      if (!is.na(occs[i, "third"])) {
+        islands[i] <- occs[i, "third"]
+      } else if (!is.na(occs[i, "second"])) {
+        islands[i] <- occs[i, "second"]
+      } else if (!is.na(occs[i, "first"])) {
+        islands[i] <- occs[i, "first"]
       }
     }
 
@@ -230,16 +231,16 @@ find_areas <- function(
     areas <- rep(0, times = nrow(occs))
 
     for (i in seq_len(nrow(occs))) {
-      if (!is.na(occs[i, "Third"]) && island_dict$has(occs[i, "Third"])) {
-        areas[i] <- island_dict$get(occs[i, "Third"])
+      if (!is.na(occs[i, "third"]) && island_dict$has(occs[i, "third"])) {
+        areas[i] <- island_dict$get(occs[i, "third"])
       } else if (
-        !is.na(occs[i, "Second"]) && island_dict$has(occs[i, "Second"])
+        !is.na(occs[i, "second"]) && island_dict$has(occs[i, "second"])
       ) {
-        areas[i] <- island_dict$get(occs[i, "Second"])
+        areas[i] <- island_dict$get(occs[i, "second"])
       } else if (
-        !is.na(occs[i, "First"]) && island_dict$has(occs[i, "First"])
+        !is.na(occs[i, "first"]) && island_dict$has(occs[i, "first"])
       ) {
-        areas[i] <- island_dict$get(occs[i, "First"])
+        areas[i] <- island_dict$get(occs[i, "first"])
       } else {
         areas[i] <- NA
       }

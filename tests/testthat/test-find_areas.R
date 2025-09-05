@@ -1,8 +1,8 @@
 # Create test dataframe for find_areas occs input
 occs <- as.data.frame(matrix(ncol = 9, nrow = 2))
 colnames(occs) <- c("acceptedScientificName", "genericName", "specificEpithet", 
-                    "decimalLongitude", "decimalLatitude", "First", 
-                    "Second", "Third", "datasetKey")
+                    "decimalLongitude", "decimalLatitude", "first", 
+                    "second", "third", "datasetKey")
 
 # Test dataframe for find_areas occs input with values
 occs_vals <- occs
@@ -20,8 +20,8 @@ colnames(custom_area) <- c("Name", "AREA")
 # Test matrix for find_areas occs input
 occ_mat <- matrix(ncol = 9, nrow = 2)
 colnames(occs) <- c("acceptedScientificName", "genericName", "specificEpithet", 
-                    "decimalLongitude", "decimalLatitude", "First", 
-                    "Second", "Third", "datasetKey")
+                    "decimalLongitude", "decimalLatitude", "first", 
+                    "second", "third", "datasetKey")
 occ_mat[1,] <- c("Anolis first", "Anolis", "first", -81.948509, 28.028463, 
                  "USA", "Florida", "Lakeland", 1)
 occ_mat[2,] <- c("Anolis second", "Anolis", "second", -81.949353, 28.028047, 
@@ -44,9 +44,9 @@ occ_types$genericName <- as.factor(occ_types$genericName)
 occ_types$specificEpithet <- as.factor(occ_types$specificEpithet)
 occ_types$decimalLongitude <- as.character(occ_types$decimalLongitude)
 occ_types$decimalLatitude <- as.character(occ_types$decimalLatitude)
-occ_types$First <- as.factor(occ_types$First)
-occ_types$Second <- as.factor(occ_types$Second)
-occ_types$Third <- as.factor(occ_types$Third)
+occ_types$first <- as.factor(occ_types$first)
+occ_types$second <- as.factor(occ_types$second)
+occ_types$third <- as.factor(occ_types$third)
 
 ### Spatial inputs ###
 # Create test SpatVector with WKT polygon

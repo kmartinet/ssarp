@@ -23,13 +23,13 @@ will likely require the returned dataframe to be cleaned by the user.}
 }
 \value{
 A dataframe of the species name, longitude, latitude, and three parts
-of occurrence information. "First" is the name used to describe the largest
-possible area of land where the occurrence point is found. "Second" is the
+of occurrence information. "first" is the name used to describe the largest
+possible area of land where the occurrence point is found. "second" is the
 name used to describe the second-largest possible area of land that
-corresponds with the occurrence point. "Third" is the most specific area of
+corresponds with the occurrence point. "third" is the most specific area of
 land that corresponds with the occurrence point. Functions later in the ssarp
-pipeline default to checking whether "Third" has an entry, then look at
-"Second," and then "First."
+pipeline default to checking whether "third" has an entry, then look at
+"second," and then "first."
 }
 \description{
 Use various mapping tools to attempt to find the names of land masses where

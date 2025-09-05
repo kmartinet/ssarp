@@ -1,8 +1,8 @@
 # Create test dataframe for occs input
 occs <- as.data.frame(matrix(ncol = 10, nrow = 2))
 colnames(occs) <- c("acceptedScientificName", "genericName", "specificEpithet", 
-                    "decimalLongitude", "decimalLatitude", "First", 
-                    "Second", "Third", "datasetKey", "areas")
+                    "decimalLongitude", "decimalLatitude", "first", 
+                    "second", "third", "datasetKey", "areas")
 
 # Test dataframe for find_areas occs input with values
 occs_vals <- occs
@@ -17,8 +17,8 @@ occs_vals[,10] <- as.numeric(occs_vals[,10])
 # Test matrix for occs input
 occ_mat <- matrix(ncol = 10, nrow = 2)
 colnames(occs) <- c("acceptedScientificName", "genericName", "specificEpithet", 
-                    "decimalLongitude", "decimalLatitude", "First", 
-                    "Second", "Third", "datasetKey", "areas")
+                    "decimalLongitude", "decimalLatitude", "first", 
+                    "second", "third", "datasetKey", "areas")
 occ_mat[1,] <- c("Anolis first_sp", "Anolis", "first_sp", -81.948509, 
                  28.028463, "USA", "Florida", "Lakeland", 1, 100)
 occ_mat[2,] <- c("Anolis second_sp", "Anolis", "second_sp", -81.949353, 
@@ -32,9 +32,9 @@ colnames(occ_name) <- c(1:10)
 occ_types <- occs_vals
 occ_types$specificEpithet <- as.factor(occ_types$specificEpithet)
 occ_types$areas <- as.character(occ_types$areas)
-occ_types$First <- as.factor(occ_types$First)
-occ_types$Second <- as.factor(occ_types$Second)
-occ_types$Third <- as.factor(occ_types$Third)
+occ_types$first <- as.factor(occ_types$first)
+occ_types$second <- as.factor(occ_types$second)
+occ_types$third <- as.factor(occ_types$third)
 
 ########
 test_that("Inputting a matrix instead of a dataframe for occurrence records 

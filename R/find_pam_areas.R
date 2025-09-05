@@ -77,8 +77,8 @@ find_pam_areas <- function(pam, area_custom = NULL) {
       # Fix colnames
       colnames(sp_df) <- c("genericName", "specificEpithet")
 
-      # Add island to dataframe (call it "Third" for ssarp::find_areas())
-      sp_df$Third <- island
+      # Add island to dataframe (call it "third" for ssarp::find_areas())
+      sp_df$third <- island
 
       # Add this small dataframe to the list
       dat[[length(dat) + 1]] <- sp_df
@@ -88,12 +88,12 @@ find_pam_areas <- function(pam, area_custom = NULL) {
   # Turn dat into a dataframe
   occs <- do.call(rbind.data.frame, dat)
 
-  # Add "First" and "Second" columns so it can be used with ssarp::find_areas()
-  occs$First <- NA
-  occs$Second <- NA
+  # Add "first" and "second" columns so it can be used with ssarp::find_areas()
+  occs$first <- NA
+  occs$second <- NA
   # They also need to be characters
-  occs$First <- as.character(occs$First)
-  occs$Second <- as.character(occs$Second)
+  occs$first <- as.character(occs$first)
+  occs$second <- as.character(occs$second)
 
   return(find_areas(occs, area_custom))
 }

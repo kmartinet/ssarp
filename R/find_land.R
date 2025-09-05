@@ -15,13 +15,13 @@
 #' standard location for island names in its returned information, so using it
 #' will likely require the returned dataframe to be cleaned by the user.
 #' @return A dataframe of the species name, longitude, latitude, and three parts
-#' of occurrence information. "First" is the name used to describe the largest
-#' possible area of land where the occurrence point is found. "Second" is the
+#' of occurrence information. "first" is the name used to describe the largest
+#' possible area of land where the occurrence point is found. "second" is the
 #' name used to describe the second-largest possible area of land that
-#' corresponds with the occurrence point. "Third" is the most specific area of
+#' corresponds with the occurrence point. "third" is the most specific area of
 #' land that corresponds with the occurrence point. Functions later in the ssarp
-#' pipeline default to checking whether "Third" has an entry, then look at
-#' "Second," and then "First."
+#' pipeline default to checking whether "third" has an entry, then look at
+#' "second," and then "first."
 #' @examples
 #' # The GBIF key for the Anolis genus is 8782549
 #' # Read in example dataset filtered from:
@@ -101,7 +101,7 @@ find_land <- function(occurrences, fillgaps = FALSE) {
   # But sometimes there are three...
   suppressWarnings(
     occs <- occs |>
-      tidyr::separate(where2, c("First", "Second", "Third"), sep = ":")
+      tidyr::separate(where2, c("first", "second", "third"), sep = ":")
   )
   colnames(occs) <- c(
     "acceptedScientificName",
@@ -109,9 +109,9 @@ find_land <- function(occurrences, fillgaps = FALSE) {
     "specificEpithet",
     "decimalLongitude",
     "decimalLatitude",
-    "First",
-    "Second",
-    "Third",
+    "first",
+    "second",
+    "third",
     "datasetKey"
   )
 
@@ -128,7 +128,7 @@ find_land <- function(occurrences, fillgaps = FALSE) {
         }
         break
       }
-      if (is.na(occs[i, "First"])) {
+      if (is.na(occs[i, "first"])) {
         # Get lon and lat
         longitude <- occs[i, "decimalLongitude"]
         latitude <- occs[i, "decimalLatitude"]

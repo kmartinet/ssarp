@@ -10,7 +10,7 @@ find_areas(occs, area_custom = NULL, shapefile = NULL, names = NULL)
 \item{occs}{The dataframe that is returned by \code{ssarp::find_land()}. If using
 a custom occurrence record dataframe, ensure that it has the following
 columns: "genericName", "specificEpithet",
-"decimalLongitude", "decimalLatitude", "First", "Second", "Third",
+"decimalLongitude", "decimalLatitude", "first", "second", "third",
 "datasetKey". The "datasetKey" column is important for GBIF records and
 identifies the dataset to which the occurrence record belongs. Custom
 dataframes without this style of data organization should fill the column

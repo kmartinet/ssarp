@@ -8,11 +8,11 @@
 #' - "areas" containing the areas associated with the land masses of interest
 #' - "specificEpithet" containing the names of the species living on those
 #' islands
-#' - "First" containing locality information. In the ssarp workflow, this
+#' - "first" containing locality information. In the ssarp workflow, this
 #' column contains the country name
-#' - "Second" containing locality information. In the ssarp workflow, this
+#' - "second" containing locality information. In the ssarp workflow, this
 #' column contains a province or island name
-#' - "Third" containing locality information. In the ssarp workflow, this
+#' - "third" containing locality information. In the ssarp workflow, this
 #' column contains the island name if the 7th column does not contain the
 #' island name
 #' @return A dataframe with a row for each island in the given occurrence
@@ -39,15 +39,15 @@ get_presence_absence <- function(occs) {
   # Checkmate input validation
   checkmate::assertDataFrame(occs)
   checkmate::testSubset(
-    c("specificEpithet", "areas", "First", "Second", "Third"),
+    c("specificEpithet", "areas", "first", "second", "third"),
     names(occs)
   )
   # Ensure columns are correct type
   checkmate::assertCharacter(occs$specificEpithet)
   checkmate::assertNumeric(occs$areas)
-  checkmate::assertCharacter(occs$First)
-  checkmate::assertCharacter(occs$Second)
-  checkmate::assertCharacter(occs$Third)
+  checkmate::assertCharacter(occs$first)
+  checkmate::assertCharacter(occs$second)
+  checkmate::assertCharacter(occs$third)
 
   # Create a dataframe that counts how many records there are for each species
   #  in each island
@@ -78,7 +78,7 @@ get_presence_absence <- function(occs) {
       area_names,
       occs[
         which(occs$areas == new_occs[i, 1])[1],
-        c("First", "Second", "Third")
+        c("first", "second", "third")
       ]
     )
   }
@@ -87,7 +87,7 @@ get_presence_absence <- function(occs) {
   final_occs <- cbind(area_names, new_occs)
 
   # Rownames won't make sense, so reset them to 1 to n
-  rownames(final_occs) <- c(1:length(final_occs$First))
+  rownames(final_occs) <- c(1:length(final_occs$first))
 
   return(final_occs)
 }
