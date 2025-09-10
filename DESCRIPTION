@@ -36,5 +36,7 @@ Suggests:
     knitr (>= 1.46),
     rgbif,
     BAMMtools,
-    curl
+    curl,
+    httptest,
+    spdep
 Config/testthat/edition: 3

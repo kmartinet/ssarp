@@ -1,3 +1,5 @@
+library(httptest)
+
 # Test dataframe for find_land occs input without values
 occs <- as.data.frame(matrix(ncol = 6, nrow = 2))
 colnames(occs) <- c("decimalLongitude", "decimalLatitude", 
@@ -72,16 +74,6 @@ test_that("When occurrence record dataframe input has no rows,
   expect_error(find_land(occs))
 })
 
-if (!curl::has_internet()) {
-  cli::cli_alert_info("No internet connection. Cannot run Photon tests.")
-} else {
-  test_that("Fillgaps attempts to get information for a datapoint 
-            unsupported by map.where", {
-    expect_message(find_land(occs_mystery, fillgaps = TRUE),
-                   "Filling gaps using Photon...")
-  })
-}
-
 test_that("Inputting a dataframe without the correct column names will cause
           an error", {
             expect_error(find_land(occ_name))
@@ -90,4 +82,19 @@ test_that("Inputting a dataframe without the correct column names will cause
 test_that("Inputting a dataframe without the correct types will cause an error",
           {
             expect_error(find_land(occ_types))
+})
+
+##### API testing #####
+# Using a mock API through httptest so that Photon doesn't need to be called 
+#  directly.
+# Mock API response saved in \tests\testthat\photon.komoot.io
+
+# Wrap with the "with_mock_api" function
+with_mock_api({
+  test_that("A location not found with the maps package can be found with
+            Photon when using fillgaps = TRUE",
+            {
+              result <- find_land(occs_mystery, fillgaps = TRUE)
+              expect_equal(result$second[1], "Isla Pinzón")
+            })
 })

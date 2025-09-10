@@ -1,0 +1,34 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "osm_type": "W",
+                "osm_id": 303268103,
+                "osm_key": "place",
+                "osm_value": "island",
+                "type": "other",
+                "countrycode": "EC",
+                "name": "Isla Pinzón",
+                "country": "Ecuador",
+                "city": "Parroquia Santa Rosa",
+                "state": "Provincia de Galápagos",
+                "county": "Cantón Santa Cruz",
+                "extent": [
+                    -90.6884183,
+                    -0.5873741,
+                    -90.6423652,
+                    -0.6344752
+                ]
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -90.66598885769616,
+                    -0.61100745
+                ]
+            }
+        }
+    ]
+}
