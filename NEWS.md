@@ -1,3 +1,20 @@
+ssarp 0.4.1 (2025-09-11)
+=========================
+
+### NEW FEATURES
+
+  * Added a [new vignette discussing spatial autocorrelation and how to test for it within the `ssarp` pipeline](https://github.com/kmartinet/ssarp/commit/c82cac9bcc8a92e4b213d522cb01a3021944f9c8)
+
+### DOCUMENTATION FIXES
+
+  * Code and text in the README has been clarified, including fixing an error in the example code related to using `find_land()`
+  * All references to the depricated `find_land()` function have been removed from documentation
+  * Added better descriptions of the outputs for `create_SAR()` and `create_SpAR()` 
+  
+### OTHER FIXES
+
+  * New `testthat` test cases for `find_areas()` and `find_land()`
+
 ssarp 0.4.0 (2025-07-19)
 =========================
 

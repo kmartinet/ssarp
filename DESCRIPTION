@@ -4,7 +4,7 @@ Title: ssarp (Species-/Speciation-Area Relationship Projector)
 Description: Create Species- and Speciation-Area Relationships for any taxa.
 Authors@R: person("Kristen", "Martinet", email = "kmartinet@outlook.com", role = c("aut", "cre"))
 Maintainer: Kristen Martinet <kmartinet@outlook.com>
-Version: 0.4.0
+Version: 0.4.1
 URL: https://github.com/kmartinet/ssarp, https://kmartinet.github.io/ssarp/
 BugReports: https://github.com/kmartinet/ssarp/issues
 Imports: 
