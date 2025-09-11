@@ -5,7 +5,8 @@ articles:
   Create_SAR: Create_SAR.html
   Create_SpAR: Create_SpAR.html
   Get_Data: Get_Data.html
-last_built: 2025-09-10T19:31Z
+  Spatial_Autocorrelation: Spatial_Autocorrelation.html
+last_built: 2025-09-11T17:45Z
 urls:
   reference: https://kmartinet.github.io/ssarp/reference
   article: https://kmartinet.github.io/ssarp/articles
