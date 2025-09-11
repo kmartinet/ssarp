@@ -1,0 +1,94 @@
+---
+title: "Assessing Spatial Autocorrelation"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Assessing Spatial Autocorrelation}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Introduction
+
+Species-area relationships (SARs) and speciation-area relationships (SpARs) are impacted by the environmental and spatial characteristics of the islands (or island-like areas) of interest. When inferring SARs and SpARs, researchers typically treat these effects as part of the broader biogeographic processes that are captured by the SARs and SpARs (Triantis et al. 2012). However, ignoring spatial effects when inferring SARs and SpARs can result in biased parameter estimates (Barros et al. 2023).
+
+Testing for spatial autocorrelation, when data from spatially nearby locations is not independent from each other, allows researchers to determine whether these spatial effects are impacting parameter estimates. This vignette provides an example of testing for spatial autocorrelation for a dataset including species richness of Galápagos finches. This dataset was created using the Galápagos finch presence-absence matrix published with the `cooccur` R package (Griffith et al. 2016), and then using `ssarp` to associate those islands with their areas.
+
+```{r load_data, message = FALSE}
+# Load libraries
+library(ssarp)
+library(spdep)
+
+# Read in finch data
+finch_dat <- read.csv(system.file("extdata",
+                                  "finch_richness.csv",
+                                  package = "ssarp"))
+
+# Print first 5 lines of finch_dat
+head(finch_dat, n = 5)
+```
+
+## Testing for Spatial Autocorrelation using Moran's I
+
+Moran's I (Moran 1950) is a commonly used metric for testing for spatial autocorrelation in ecological data (Dormann et al. 2007). Here, we will use the `spdep` R package to calculate Moran's I for our Galápagos finch data. 
+
+An important step in calculating Moran's I is to identify spatial neighbors in the dataset. In order to do this for our Galápagos finch data, we need to load a shapefile for the Galápagos Islands. The files required to load this shapefile are from the [Galápagos Geoportal](https://geodata.fcdarwin.org.ec/catalogue/#/dataset/489), and are included in the `extdata` folder as part of `ssarp`.
+
+```{r load_shapefile, message = FALSE, warning = FALSE}
+# Read shapefile
+# quiet = TRUE parameter suppresses info that st_read normally outputs about file location
+galap_shape <- st_read(system.file("extdata",
+                                  "galapagos_island_Project.shp",
+                                  package = "ssarp"), quiet = TRUE)
+
+```
+
+Next, we will merge the finch data with the Galápagos shapefile.
+
+```{r merge}
+# Merge shapefile (galap_shape) with finch data (finch_dat) by 
+#  the island name ("nombre" in the shapefile and "island" in the finch data)
+islands <- merge(x = galap_shape, 
+                 y = finch_dat,
+                 by.x = "nombre",
+                 by.y = "island")
+```
+
+Now, we can use the newly created `islands` spatial object to calculate the distance between neighboring islands and create a list of spatial weights necessary for calculating Moran's I. We will accomplish this goal using distances between centroids of all of the islands on which finches occur.
+
+```{r neighbor, warning = FALSE}
+# Find coordinates for the centroids of all of the islands 
+#  to use in the neighbor calculation
+coords <- st_coordinates(st_centroid(islands))
+
+# Identify centroid neighbors for each island
+# d1: lower bound for distance
+# d2: upper bound for distance
+# Islands are considered neighbors if the distance is between d1 and d2
+
+# d2 is 30000m in this example, informed by prior distance calculations within
+#  the Galápagos archipelago
+neighbors <- dnearneigh(coords, d1 = 0, d2 = 30000)
+
+# Assign spatial weights to the neighbors list for use in the Moran test
+# style = "W": row-standardized, which is the most-commonly used (Dormann et al. 2007)
+neighbor_weights <- nb2listw(neighbors, style = "W")
+
+```
+
+Finally, we can run the Moran's I test to determine whether Galápagos finch richness is biased by spatial autocorrelation.
+
+```{r}
+# zero.policy = TRUE allows for islands to have no neighbors
+moran.test(islands$richness, neighbor_weights, zero.policy = TRUE)
+```
+
+With a p-value of 0.5, we can conclude that Galápagos finch species richness is not spatially structured. We can also conclude that the SAR for Galápagos finches is not driven by the structure of geographic distances between the islands on which they occur.
+
+As a note of caution, this result is only indicative of a particular spatial grain and the particular species included here. Species richness might be spatially structured at a different grain (for example, between habitat fragments), but not at the island level. We encourage researchers to fully explore the potential of spatial autocorrelation in their datasets before drawing conclusions about the parameters of SARs and SpARs.
+
+## References
+- Barros, D.D., Mathias, M.d.L., Borges, P.A.V., & Borda-de-Água, L. (2023). The Importance of Including Spatial Autocorrelation When Modelling Species Richness in Archipelagos: A Bayesian Approach. Diversity, 15: 127. https://doi.org/10.3390/d15020127
+- Dormann, C.F., McPherson, J.M, Araújo, M.B., Bivand, R., Bolliger, J., Carl, G., Davies, R.G., Hirzel, A., Jetz, W., Kissling, W.D., Kühn, I., Ohlemüller, R., Peres-Neto, P.R., Reineking, B., Schröder, B., Schurr, F.M., & Wilson, R. (2007). Methods to account for spatial autocorrelation in the analysis of species distributional data: a review. Ecography, 30: 609-628. https://doi.org/10.1111/j.2007.0906-7590.05171.x
+- Griffith, D.M., Veech, J.A., & Marsh, C.J. (2016). cooccur: Probabilistic Species Co-Occurrence Analysis in R. Journal of Statistical Software, Code Snippets, 69(2): 1–17. https://doi.org/10.18637/jss.v069.c02
+- Moran, P.A.P. (1950). Notes on Continuous Stochastic Phenomena. Biometrika, 37(1/2): 17-23. https://doi.org/10.2307/2332142
+- Triantis, K.A., Guilhaumon, F., & Whittaker, R.J. (2012), The island species–area relationship: biology and statistics. Journal of Biogeography, 39: 215-231. https://doi.org/10.1111/j.1365-2699.2011.02652.x
