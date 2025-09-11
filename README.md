@@ -301,6 +301,17 @@ the first 10,000 records for the genus in GBIF! The best-fit model was a
 segmented regression with one breakpoint. The R console will also output
 statistical information about the model.
 
+### A Note About Spatial Autocorrelation
+
+Species-area relationships (SARs) and speciation-area relationships (SpARs) are 
+impacted by the environmental and spatial characteristics of the islands (or 
+island-like areas) of interest. When inferring SARs and SpARs, researchers 
+typically treat these effects as part of the broader biogeographic processes 
+that are captured by the SARs and SpARs (Triantis et al. 2012). However, 
+ignoring spatial effects when inferring SARs and SpARs can result in biased 
+parameter estimates (Barros et al. 2023). Please refer to 
+[this vignette to learn more about how to test for spatial autocorrelation when using `ssarp` to create SARs and SpARs](https://kmartinet.github.io/ssarp/articles/Spatial_Autocorrelation.html).
+
 ### Workflow Summary for using data from GBIF to create a species-area relationship plot
 
 1.  Use `rgbif` to gather occurrence records, or input your own
@@ -388,6 +399,9 @@ polygons nested within others or polygons with holes in the middle.
 
 #### Literature Cited
 
+- Barros, D.D., Mathias, M.d.L., Borges, P.A.V., & Borda-de-Água, L. (2023). The
+  Importance of Including Spatial Autocorrelation When Modelling Species 
+  Richness in Archipelagos: A Bayesian Approach. Diversity, 15: 127.
 - Jetz, W., Thomas, G.H, Joy, J.B., Harmann, K., & Mooers, A.O. (2012).
   The global diversity of birds in space and time. *Nature*, 491:
   444-448.
@@ -400,3 +414,6 @@ polygons nested within others or polygons with holes in the middle.
   Brown, J.W., Huang, H., & Larson, J.G. (2014). BAMMtools: an R package
   for the analysis of evolutionary dynamics on phylogenetic trees.
   Methods in Ecology and Evolution, 5: 701-707.
+- Triantis, K.A., Guilhaumon, F., & Whittaker, R.J. (2012), The island 
+  species–area relationship: biology and statistics. Journal of Biogeography, 
+  39: 215-231.

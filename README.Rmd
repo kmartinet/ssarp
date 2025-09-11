@@ -185,6 +185,10 @@ create_SAR(occurrences = area_dat, npsi = 1, visualize = TRUE)
 ```
 This is the species-area relationship (SAR) for Anolis including island-based occurrences within a polygon around Caribbean islands from the first 10,000 records for the genus in GBIF! The best-fit model was a segmented regression with one breakpoint. The R console will also output statistical information about the model.
 
+### A Note About Spatial Autocorrelation
+
+Species-area relationships (SARs) and speciation-area relationships (SpARs) are impacted by the environmental and spatial characteristics of the islands (or island-like areas) of interest. When inferring SARs and SpARs, researchers typically treat these effects as part of the broader biogeographic processes that are captured by the SARs and SpARs (Triantis et al. 2012). However, ignoring spatial effects when inferring SARs and SpARs can result in biased parameter estimates (Barros et al. 2023). Please refer to [this vignette to learn more about how to test for spatial autocorrelation when using `ssarp` to create SARs and SpARs](https://kmartinet.github.io/ssarp/articles/Spatial_Autocorrelation.html).
+
 ### Workflow Summary for using data from GBIF to create a species-area relationship plot
 
 1. Use `rgbif` to gather occurrence records, or input your own dataframe of occurrence records.
@@ -204,8 +208,10 @@ This is the species-area relationship (SAR) for Anolis including island-based oc
 When using `rgbif::occ_search` to gather occurrence records from GBIF, the user can specify a well-known text (WKT) representation of geometry to restrict the geographic location of the returned occurrence records. The `rgbif::occ_search` function requires a counter-clockwise winding order for WKT. I find it helpful to think about WKT polygons in this way: imagine a square around your geographic area of interest and pick one of the corners as a starting point. The order of points in WKT format should follow counter-clockwise from the corner you picked first, and the final entry in the WKT string needs to be the same as the first entry. Additionally, while GPS points are typically represented in "latitude, longitude" format, WKT expects them in "longitude latitude" format with commas separating the points rather than individual longitude and latitude values. WKT polygons can have more specified points than included in this simple square example, and even include polygons nested within others or polygons with holes in the middle. 
 
 #### Literature Cited
+- Barros, D.D., Mathias, M.d.L., Borges, P.A.V., & Borda-de-Água, L. (2023). The Importance of Including Spatial Autocorrelation When Modelling Species Richness in Archipelagos: A Bayesian Approach. Diversity, 15: 127.
 - Jetz, W., Thomas, G.H, Joy, J.B., Harmann, K., & Mooers, A.O. (2012). The global diversity of birds in space and time. *Nature*, 491: 444-448.
 - Magallόn, S. & Sanderson, M.J. (2001). Absolute Diversification Rates in Angiosperm Clades. *Evolution*, 55(9): 1762-1780.
 - Rabosky, D.L. (2014). Automatic Detection of Key Innovations, Rate Shifts, and Diversity-Dependence on Phylogenetic Trees. PLOS ONE, 9(2): e89543.436
 - Rabosky, D.L., Grundler, M., Anderson, C., Title, P., Shi, J.J., Brown, J.W., Huang, H., & Larson, J.G. (2014). BAMMtools: an R package for the analysis of evolutionary dynamics on phylogenetic trees. Methods in Ecology and Evolution, 5: 701-707.
+- Triantis, K.A., Guilhaumon, F., & Whittaker, R.J. (2012), The island species–area relationship: biology and statistics. Journal of Biogeography, 39: 215-231.
 
