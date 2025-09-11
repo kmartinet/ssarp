@@ -41,6 +41,13 @@ if (!curl::has_internet()) {
   occ_types$genericName <- as.factor(occ_types$genericName)
   occ_types$specificEpithet <- as.factor(occ_types$specificEpithet)
   
+  # Generate speciation rates using epm to compare to Sun and Folk (2020)
+  epm_dr <- epm::DRstat(tree)
+  # Turn into dataframe
+  epm_df <- as.data.frame(epm_dr)
+  
+  
+  
   ########
   
   test_that("Inputting a matrix instead of a dataframe for occurrence records 
@@ -98,4 +105,14 @@ if (!curl::has_internet()) {
                 expect_setequal(max, 0.2472)
                 expect_setequal(min, 0.023)
   })
+  
+  test_that("estimate_DR rate results are the same as DR_stat from epm", {
+    sp_dr <- estimate_DR(tree = tree,
+                         label_type = "epithet",
+                         occurrences = occ_simple)
+    sp_ssarp <- round(sp_dr$rate, digits = 4)
+    sp_epm <- round(epm_df$epm_dr, digits = 4)
+    expect_setequal(sp_ssarp, sp_epm)
+  })
+  
 }
