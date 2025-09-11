@@ -17,6 +17,12 @@ occs_vals[,5] <- as.numeric(occs_vals[,5])
 custom_area <- as.data.frame(matrix(ncol = 2, nrow = 2))
 colnames(custom_area) <- c("Name", "AREA")
 
+# Test dataframe for proper find_areas custom area input
+custom_area2 <- as.data.frame(matrix(ncol = 2, nrow = 1))
+colnames(custom_area2) <- c("Name", "AREA")
+custom_area2[1,] <- c("Lakeland", 1234)
+custom_area2$AREA <- as.numeric(custom_area2$AREA)
+
 # Test matrix for find_areas occs input
 occ_mat <- matrix(ncol = 9, nrow = 2)
 colnames(occs) <- c("acceptedScientificName", "genericName", "specificEpithet", 
@@ -75,6 +81,12 @@ test_that("Inputting an empty custom area dataframe will result in an empty
           dataframe", {
  test_areas <- find_areas(occs_vals, custom_area)
  expect_equal(length(test_areas[,1]), 0)
+})
+
+test_that("Inputting a valid custom dataframe will result in find_areas
+          returning a dataframe", {
+  expect_s3_class(find_areas(occs = occs_vals,
+                            area_custom = custom_area2), "data.frame")
 })
 
 test_that("Inputting a matrix instead of a dataframe for occurrence records 
