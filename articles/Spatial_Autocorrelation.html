@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">ssarp</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,12 +30,13 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
-<li class="nav-item dropdown">
+<li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/Get_Data.html">Get Occurrence Records from GBIF</a></li>
     <li><a class="dropdown-item" href="../articles/Create_SAR.html">Create Species-Area Relationship</a></li>
     <li><a class="dropdown-item" href="../articles/Create_SpAR.html">Create Speciation-Area Relationship</a></li>
+    <li><a class="dropdown-item" href="../articles/Spatial_Autocorrelation.html">Assessing Spatial Autocorrelation</a></li>
   </ul>
 </li>
       </ul>
@@ -114,16 +115,16 @@ we will use the <code>spdep</code> R package to calculate Moran’s I for
 our Galápagos finch data.</p>
 <p>An important step in calculating Moran’s I is to identify spatial
 neighbors in the dataset. In order to do this for our Galápagos finch
-data, we need to load a shapefile for the Galápagos Islands. The files
-required to load this shapefile are from the <a href="https://geodata.fcdarwin.org.ec/catalogue/#/dataset/489" class="external-link">Galápagos
-Geoportal</a>, and are included in the <code>extdata</code> folder as
-part of <code>ssarp</code>.</p>
+data, we need to load a shapefile for the Galápagos Islands. An
+excellent shapefile is available from the <a href="https://geodata.fcdarwin.org.ec/catalogue/#/dataset/489" class="external-link">Galápagos
+Geoportal</a>, and is included as an <code>.rda</code> file in the
+<code>extdata</code> folder as part of <code>ssarp</code> for ease of
+use in this vignette.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Read shapefile</span></span>
-<span><span class="co"># quiet = TRUE parameter suppresses info that st_read normally outputs about file location</span></span>
-<span><span class="va">galap_shape</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">st_read</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span>
-<span>                                  <span class="st">"galapagos_island_Project.shp"</span>,</span>
-<span>                                  package <span class="op">=</span> <span class="st">"ssarp"</span><span class="op">)</span>, quiet <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Load shapefile. The object will be called "galap_shape"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>,</span>
+<span>                 <span class="st">"galapagos_islands.rda"</span>,</span>
+<span>                  package <span class="op">=</span> <span class="st">"ssarp"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Next, we will merge the finch data with the Galápagos shapefile.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Merge shapefile (galap_shape) with finch data (finch_dat) by </span></span>

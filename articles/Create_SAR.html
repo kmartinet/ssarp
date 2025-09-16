@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">ssarp</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,6 +36,7 @@
 <li><a class="dropdown-item" href="../articles/Get_Data.html">Get Occurrence Records from GBIF</a></li>
     <li><a class="dropdown-item" href="../articles/Create_SAR.html">Create Species-Area Relationship</a></li>
     <li><a class="dropdown-item" href="../articles/Create_SpAR.html">Create Speciation-Area Relationship</a></li>
+    <li><a class="dropdown-item" href="../articles/Spatial_Autocorrelation.html">Assessing Spatial Autocorrelation</a></li>
   </ul>
 </li>
       </ul>
@@ -208,20 +209,20 @@ will be removed by using this function.</p>
 <h2 id="create-species-area-relationship">Create Species-Area Relationship<a class="anchor" aria-label="anchor" href="#create-species-area-relationship"></a>
 </h2>
 <p>Finally, we will generate the SAR using the
-<code><a href="../reference/create_SAR.html">ssarp::create_SAR</a></code> function. The
-<code><a href="../reference/create_SAR.html">ssarp::create_SAR()</a></code> function creates multiple regression
-objects with breakpoints up to the user-specified “npsi” parameter. For
-example, if “npsi” is two, <code><a href="../reference/create_SAR.html">ssarp::create_SAR()</a></code> will
-generate regression objects with zero (linear regression), one, and two
-breakpoints. The function will then return the regression object with
-the lowest AIC score. The “npsi” parameter will be set to one in this
-example. Note that if linear regression (zero breakpoints) is
-better-supported than segmented regression with one breakpoint, the
-linear regression will be returned instead. We set the “visualize”
-parameter to <code>TRUE</code> so that the function outputs the plot of
-the SAR.</p>
+<code><a href="../reference/create_SAR.html">ssarp::create_sar()</a></code> function (can also be run with
+<code><a href="../reference/create_SAR.html">create_SAR()</a></code>). The <code><a href="../reference/create_SAR.html">ssarp::create_sar()</a></code>
+function creates multiple regression objects with breakpoints up to the
+user-specified “npsi” parameter. For example, if “npsi” is two,
+<code><a href="../reference/create_SAR.html">ssarp::create_sar()</a></code> will generate regression objects with
+zero (linear regression), one, and two breakpoints. The function will
+then return the regression object with the lowest AIC score. The “npsi”
+parameter will be set to one in this example. Note that if linear
+regression (zero breakpoints) is better-supported than segmented
+regression with one breakpoint, the linear regression will be returned
+instead. We set the “visualize” parameter to <code>TRUE</code> so that
+the function outputs the plot of the SAR.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">ssarp</span><span class="fu">::</span><span class="fu"><a href="../reference/create_SAR.html">create_SAR</a></span><span class="op">(</span>occurrences <span class="op">=</span> <span class="va">nocont_dat</span>, npsi <span class="op">=</span> <span class="fl">1</span>, visualize <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">ssarp</span><span class="fu">::</span><span class="fu"><a href="../reference/create_SAR.html">create_sar</a></span><span class="op">(</span>occurrences <span class="op">=</span> <span class="va">nocont_dat</span>, npsi <span class="op">=</span> <span class="fl">1</span>, visualize <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <div class="float">
 <img src="anolis_SAR-1.png" alt="Figure 2. This is the species-area relationship (SAR) for Anolis including island-based occurrences within a polygon around Caribbean islands from the first 10000 records for the genus in GBIF! The best-fit model was a segmented regression with one breakpoint."><div class="figcaption">Figure 2. This is the species-area relationship
 (SAR) for <em>Anolis</em> including island-based occurrences within a
@@ -229,7 +230,7 @@ polygon around Caribbean islands from the first 10000 records for the
 genus in GBIF! The best-fit model was a segmented regression with one
 breakpoint.</div>
 </div>
-<p>The <code><a href="../reference/create_SAR.html">ssarp::create_SAR()</a></code> function will also output the
+<p>The <code><a href="../reference/create_SAR.html">ssarp::create_sar()</a></code> function will also output the
 summary for the best-fit model for the data (displayed above).</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

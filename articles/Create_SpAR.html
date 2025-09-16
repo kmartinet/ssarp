@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">ssarp</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.5.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,6 +36,7 @@
 <li><a class="dropdown-item" href="../articles/Get_Data.html">Get Occurrence Records from GBIF</a></li>
     <li><a class="dropdown-item" href="../articles/Create_SAR.html">Create Species-Area Relationship</a></li>
     <li><a class="dropdown-item" href="../articles/Create_SpAR.html">Create Speciation-Area Relationship</a></li>
+    <li><a class="dropdown-item" href="../articles/Spatial_Autocorrelation.html">Assessing Spatial Autocorrelation</a></li>
   </ul>
 </li>
       </ul>
@@ -146,7 +147,7 @@ rates for use in our speciation-area relationship. <em>ssarp</em>
 includes three methods for estimating tip speciation rates: BAMM
 (Rabosky 2014), the lambda calculation for crown groups from Magallόn
 and Sanderson (2001), and DR (Jetz et al. 2012).</p>
-<p>The <code><a href="../reference/estimate_BAMM.html">ssarp::estimate_BAMM</a></code> function requires a
+<p>The <code><a href="../reference/estimate_BAMM.html">ssarp::estimate_bamm()</a></code> function requires a
 <code>bammdata</code> object as input, which must be created using the
 <code>BAMMtools</code> package (Rabosky et al. 2014) after the user
 completes a BAMM analysis. This object includes tip speciation rates by
@@ -157,46 +158,47 @@ the occurrence record dataframe.</p>
 estimation of speciation rate than net diversification (Belmaker and
 Jetz 2015; Quintero and Jetz 2018) and returns results similar to BAMM’s
 tip speciation rate estimations (Title and Rabosky 2019). The
-<code><a href="../reference/estimate_DR.html">ssarp::estimate_DR</a></code> function returns the values obtained
+<code><a href="../reference/estimate_DR.html">ssarp::estimate_dr()</a></code> function returns the values obtained
 from running an adapted version of the “DR_statistic” function from Sun
 and Folk (2020).</p>
-<p>In addition to tip speciation rates, SSARP includes a function for
-calculating the speciation rate for a clade from Magallόn and Sanderson
-(2001). The <code>ssarp::estimate_speciation</code> function uses the
-<code><a href="https://rdrr.io/pkg/ape/man/subtrees.html" class="external-link">ape::subtrees</a></code> function (Paradis and Schliep 2019) to
-generate all possible subtrees from the user-provided phylogenetic tree
-that corresponds with the taxa of interest for the SpAR. Then, species
-in the provided occurrence records generated from previous steps in the
-<code>ssarp</code> workflow are grouped by island. For each group of
-species that comprise an island, the number of subtrees that represent
-that group of species and the root age of each subtree is recorded,
-along with the name and area of the island. The speciation rate for each
-subtree is then calculated following Equation 4 in Magallόn and
-Sanderson (2001). If an island includes multiple subtrees, the island
-speciation rate is the average of the calculated speciation rates. This
-average is calculated when the SpAR is plotted.</p>
+<p>In addition to tip speciation rates, <code>ssarp</code> includes a
+function for calculating the speciation rate for a clade from Magallόn
+and Sanderson (2001). The <code><a href="../reference/estimate_MS.html">ssarp::estimate_ms()</a></code> function
+uses the <code><a href="https://rdrr.io/pkg/ape/man/subtrees.html" class="external-link">ape::subtrees</a></code> function (Paradis and Schliep 2019)
+to generate all possible subtrees from the user-provided phylogenetic
+tree that corresponds with the taxa of interest for the SpAR. Then,
+species in the provided occurrence records generated from previous steps
+in the <code>ssarp</code> workflow are grouped by island. For each group
+of species that comprise an island, the number of subtrees that
+represent that group of species and the root age of each subtree is
+recorded, along with the name and area of the island. The speciation
+rate for each subtree is then calculated following Equation 4 in
+Magallόn and Sanderson (2001). If an island includes multiple subtrees,
+the island speciation rate is the average of the calculated speciation
+rates. This average is calculated when the SpAR is plotted.</p>
 <p>In this example, we will use the lambda calculation for crown groups
 from Magallόn and Sanderson (2001) through the
-<code><a href="../reference/estimate_MS.html">ssarp::estimate_MS()</a></code> function. The “label_type” parameter
+<code><a href="../reference/estimate_MS.html">ssarp::estimate_ms()</a></code> function. The “label_type” parameter
 in this function tells <em>ssarp</em> whether the tip labels on the
 given tree include the full species name (binomial) or just the specific
 epithet (epithet).</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Calculate tip speciation rates using the lambda calculation for crown groups from Magallόn and Sanderson (2001)</span></span>
-<span><span class="va">speciation_occurrences</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/estimate_MS.html">estimate_MS</a></span><span class="op">(</span>tree <span class="op">=</span> <span class="va">tree</span>, label_type <span class="op">=</span> <span class="st">"epithet"</span>, occurrences <span class="op">=</span> <span class="va">nocont_dat</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">speciation_occurrences</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/estimate_MS.html">estimate_ms</a></span><span class="op">(</span>tree <span class="op">=</span> <span class="va">tree</span>, label_type <span class="op">=</span> <span class="st">"epithet"</span>, occurrences <span class="op">=</span> <span class="va">nocont_dat</span><span class="op">)</span></span></code></pre></div>
 <p>The “speciation_occurrences” object is a dataframe containing island
 areas with their corresponding speciation rate as estimated by the
-<code><a href="../reference/estimate_MS.html">ssarp::estimate_MS()</a></code> function.</p>
+<code><a href="../reference/estimate_MS.html">ssarp::estimate_ms()</a></code> function.</p>
 </div>
 <div class="section level2">
 <h2 id="create-speciation-area-relationship">Create Speciation-Area Relationship<a class="anchor" aria-label="anchor" href="#create-speciation-area-relationship"></a>
 </h2>
 <p>Next, we will use the “speciation_occurrences” object with the
-<code><a href="../reference/create_SpAR.html">ssarp::create_SpAR()</a></code> function to create a SpAR. Just like
-the <code><a href="../reference/create_SAR.html">ssarp::create_SAR()</a></code> function, the
-<code><a href="../reference/create_SpAR.html">ssarp::create_SpAR()</a></code> function creates multiple regression
+<code><a href="../reference/create_SpAR.html">ssarp::create_spar()</a></code> function to create a SpAR (can also be
+run with <code><a href="../reference/create_SpAR.html">create_SpAR()</a></code>). Just like the
+<code><a href="../reference/create_SAR.html">ssarp::create_sar()</a></code> function, the
+<code><a href="../reference/create_SpAR.html">ssarp::create_spar()</a></code> function creates multiple regression
 objects with breakpoints up to the user-specified “npsi” parameter. For
-example, if “npsi” is two, <code><a href="../reference/create_SpAR.html">ssarp::create_SpAR()</a></code> will
+example, if “npsi” is two, <code><a href="../reference/create_SpAR.html">ssarp::create_spar()</a></code> will
 generate regression objects with zero (linear regression), one, and two
 breakpoints. The function will then return the regression object with
 the lowest AIC score. The “npsi” parameter will be set to one in this
@@ -206,7 +208,7 @@ linear regression will be returned instead. We set the “visualize”
 parameter to <code>TRUE</code> so that the function outputs the plot of
 the SAR.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/create_SpAR.html">create_SpAR</a></span><span class="op">(</span>occurrences <span class="op">=</span> <span class="va">speciation_occurrences</span>, npsi <span class="op">=</span> <span class="fl">1</span>, visualize <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/create_SpAR.html">create_spar</a></span><span class="op">(</span>occurrences <span class="op">=</span> <span class="va">speciation_occurrences</span>, npsi <span class="op">=</span> <span class="fl">1</span>, visualize <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">##  ***Regression Model with Segmented Relationship(s)***</span></span>
 <span><span class="co">## </span></span>
@@ -237,9 +239,9 @@ segmented regression with one breakpoint.</div>
 <p>You will notice that two of the largest islands have a speciation
 rate of zero in this example. This very likely occurred because the
 calculation for speciation rate in Magallόn and Sanderson (2001) that
-<code><a href="../reference/estimate_MS.html">ssarp::estimate_MS()</a></code> uses is based on monophyly, which can
+<code><a href="../reference/estimate_MS.html">ssarp::estimate_ms()</a></code> uses is based on monophyly, which can
 be disrupted on islands with non-native species occurrence records. When
-using the <code><a href="../reference/estimate_MS.html">ssarp::estimate_MS()</a></code> function to estimate
+using the <code><a href="../reference/estimate_MS.html">ssarp::estimate_ms()</a></code> function to estimate
 speciation rates for a SpAR, it is incredibly important to manually
 filter the returned occurrence records to remove non-native species.</p>
 <div class="section level3">
