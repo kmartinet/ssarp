@@ -59,13 +59,13 @@
 #'                                    "Patton_Anolis_trimmed.tree",
 #'                                    package = "ssarp"))
 #'
-#' occ_speciation <- estimate_DR(tree = tree,
+#' occ_speciation <- estimate_dr(tree = tree,
 #'                               label_type = "epithet",
 #'                               occurrences = areas)
 #'
 #' @export
 
-estimate_DR <- function(tree, label_type = "binomial", occurrences) {
+estimate_dr <- function(tree, label_type = "binomial", occurrences) {
   # Checkmate input validation
   checkmate::assertString(label_type)
   checkmate::assertDataFrame(occurrences)
@@ -136,3 +136,8 @@ estimate_DR <- function(tree, label_type = "binomial", occurrences) {
 
   return(sp_occ)
 }
+
+# Create alias for estimate_dr
+#' @rdname estimate_dr
+#' @export
+estimate_DR <- estimate_dr

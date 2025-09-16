@@ -47,12 +47,12 @@
 #'
 #' edata <- BAMMtools::getEventData(phy = tree, eventdata = event_data)
 #'
-#' occ_speciation <- estimate_BAMM(label_type = "epithet",
+#' occ_speciation <- estimate_bamm(label_type = "epithet",
 #'                                  occurrences = areas ,
 #'                                  edata = edata)
 #' @export
 
-estimate_BAMM <- function(label_type = "binomial", occurrences, edata) {
+estimate_bamm <- function(label_type = "binomial", occurrences, edata) {
   # Checkmate input validation
   checkmate::assertString(label_type)
   checkmate::assertDataFrame(occurrences)
@@ -111,3 +111,8 @@ estimate_BAMM <- function(label_type = "binomial", occurrences, edata) {
 
   return(occurrences)
 }
+
+# Create alias for estimate_bamm
+#' @rdname estimate_bamm
+#' @export
+estimate_BAMM <- estimate_bamm

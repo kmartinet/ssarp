@@ -16,6 +16,8 @@ navbar:
         href: articles/Create_SAR.html
       - text: Create Speciation-Area Relationship
         href: articles/Create_SpAR.html
+      - text: Assessing Spatial Autocorrelation
+        href: articles/Spatial_Autocorrelation.html
 
 reference:
 - title: Prepare Occurrence Records

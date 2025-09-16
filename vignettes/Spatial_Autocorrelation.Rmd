@@ -31,14 +31,13 @@ head(finch_dat, n = 5)
 
 Moran's I (Moran 1950) is a commonly used metric for testing for spatial autocorrelation in ecological data (Dormann et al. 2007). Here, we will use the `spdep` R package to calculate Moran's I for our Galápagos finch data. 
 
-An important step in calculating Moran's I is to identify spatial neighbors in the dataset. In order to do this for our Galápagos finch data, we need to load a shapefile for the Galápagos Islands. The files required to load this shapefile are from the [Galápagos Geoportal](https://geodata.fcdarwin.org.ec/catalogue/#/dataset/489), and are included in the `extdata` folder as part of `ssarp`.
+An important step in calculating Moran's I is to identify spatial neighbors in the dataset. In order to do this for our Galápagos finch data, we need to load a shapefile for the Galápagos Islands. An excellent shapefile is available from the [Galápagos Geoportal](https://geodata.fcdarwin.org.ec/catalogue/#/dataset/489), and is included as an `.rda` file in the `extdata` folder as part of `ssarp` for ease of use in this vignette.
 
 ```{r load_shapefile, message = FALSE, warning = FALSE}
-# Read shapefile
-# quiet = TRUE parameter suppresses info that st_read normally outputs about file location
-galap_shape <- st_read(system.file("extdata",
-                                  "galapagos_island_Project.shp",
-                                  package = "ssarp"), quiet = TRUE)
+# Load shapefile. The object will be called "galap_shape"
+load(system.file("extdata",
+                 "galapagos_islands.rda",
+                  package = "ssarp"))
 
 ```
 

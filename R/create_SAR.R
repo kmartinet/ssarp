@@ -5,7 +5,7 @@
 #' of species)
 #'
 #' If the user would prefer to create their own plot of the
-#' `ssarp::create_SAR()` output, the `aggDF` element of the returned list
+#' `ssarp::create_sar()` output, the `aggDF` element of the returned list
 #' includes the raw points from the plot created here. They can be accessed
 #' as demonstrated in the Examples section.
 #' @param occurrences The dataframe output by `ssarp::find_areas()` (or if
@@ -35,7 +35,7 @@
 #' land <- find_land(occurrences = dat)
 #' areas <- find_areas(occs = land)
 #'
-#' seg <- create_SAR(occurrences = areas,
+#' seg <- create_sar(occurrences = areas,
 #'                   npsi = 1,
 #'                   visualize = FALSE)
 #' plot(seg)
@@ -44,7 +44,7 @@
 #' points <- seg$aggDF
 #' @export
 
-create_SAR <- function(occurrences, npsi = 1, visualize = FALSE) {
+create_sar <- function(occurrences, npsi = 1, visualize = FALSE) {
   # Checkmate input validation
   checkmate::assertDataFrame(occurrences)
   checkmate::assertNumeric(npsi)
@@ -225,3 +225,8 @@ create_SAR <- function(occurrences, npsi = 1, visualize = FALSE) {
     return(result)
   }
 }
+
+# Create alias for create_sar
+#' @rdname create_sar
+#' @export
+create_SAR <- create_sar

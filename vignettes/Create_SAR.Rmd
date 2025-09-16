@@ -114,14 +114,14 @@ nocont_dat <- remove_continents(occs = area_dat)
 ```
 
 ## Create Species-Area Relationship
-Finally, we will generate the SAR using the `ssarp::create_SAR` function. The `ssarp::create_SAR()` function creates multiple regression objects with breakpoints up to the user-specified “npsi” parameter. For example, if “npsi” is two, `ssarp::create_SAR()` will generate regression objects with zero (linear regression), one, and two breakpoints. The function will then return the regression object with the lowest AIC score. The “npsi” parameter will be set to one in this example. Note that if linear regression (zero breakpoints) is better-supported than segmented regression with one breakpoint, the linear regression will be returned instead. We set the "visualize" parameter to `TRUE` so that the function outputs the plot of the SAR.
+Finally, we will generate the SAR using the `ssarp::create_sar()` function (can also be run with `create_SAR()`). The `ssarp::create_sar()` function creates multiple regression objects with breakpoints up to the user-specified “npsi” parameter. For example, if “npsi” is two, `ssarp::create_sar()` will generate regression objects with zero (linear regression), one, and two breakpoints. The function will then return the regression object with the lowest AIC score. The “npsi” parameter will be set to one in this example. Note that if linear regression (zero breakpoints) is better-supported than segmented regression with one breakpoint, the linear regression will be returned instead. We set the "visualize" parameter to `TRUE` so that the function outputs the plot of the SAR.
 
 
 ``` r
-ssarp::create_SAR(occurrences = nocont_dat, npsi = 1, visualize = TRUE)
+ssarp::create_sar(occurrences = nocont_dat, npsi = 1, visualize = TRUE)
 ```
 
 ![Figure 2. This is the species-area relationship (SAR) for *Anolis* including island-based occurrences within a polygon around Caribbean islands from the first 10000 records for the genus in GBIF! The best-fit model was a segmented regression with one breakpoint.](anolis_SAR-1.png)
 
 
-The `ssarp::create_SAR()` function will also output the summary for the best-fit model for the data (displayed above).
+The `ssarp::create_sar()` function will also output the summary for the best-fit model for the data (displayed above).

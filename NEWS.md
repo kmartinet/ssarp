@@ -1,3 +1,10 @@
+ssarp 0.5.0 (2025-09-16)
+=========================
+
+### NEW FEATURES
+
+  * The default versions of `create_SAR()`, `create_SpAR()`, `estimate_BAMM()`, `estimate_DR()`, and `estimate_MS()` are now all-lowercase (`create_sar()`, `create_spar()`, `estimate_bamm()`, `estimate_dr()`, and `estimate_ms()`). The original spellings have been added as aliases to the functions (both spellings may be used).
+
 ssarp 0.4.1 (2025-09-11)
 =========================
 

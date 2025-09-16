@@ -5,15 +5,15 @@
 #' log(speciation rate)
 #'
 #' If the user would prefer to create their own plot of the
-#' `ssarp::create_SpAR()` output, the `aggDF` element of the returned list
+#' `ssarp::create_spar()` output, the `aggDF` element of the returned list
 #' includes the raw points from the plot created here. They can be accessed
 #' as demonstrated in the Examples section.
 #'
 #' More information about the three methods for estimating speciation rate
 #' included in `ssarp` can be found in [ssarp's SpAR vignette](https://kmartinet.github.io/ssarp/articles/Create_SpAR.html).
 #' @param occurrences The dataframe output by one of ssarp's speciation
-#' methods (`ssarp::estimate_BAMM()`, `ssarp::estimate_DR()`,
-#' `ssarp::estimate_MS()`), or if using a custom dataframe, ensure that it
+#' methods (`ssarp::estimate_bamm()`, `ssarp::estimate_dr()`,
+#' `ssarp::estimate_ms()`), or if using a custom dataframe, ensure that it
 #' has the following columns: areas, rate
 #' @param npsi The maximum number of breakpoints to estimate for model
 #' selection.  Default: 1
@@ -44,11 +44,11 @@
 #'                                    "Patton_Anolis_trimmed.tree",
 #'                                    package = "ssarp"))
 #'
-#' occ_speciation <- estimate_MS(tree = tree,
+#' occ_speciation <- estimate_ms(tree = tree,
 #'                               label_type = "epithet",
 #'                               occurrences = areas)
 #'
-#' seg <- create_SpAR(occurrences = occ_speciation,
+#' seg <- create_spar(occurrences = occ_speciation,
 #'                    npsi = 1,
 #'                    visualize = FALSE)
 #' plot(seg)
@@ -57,7 +57,7 @@
 #' points <- seg$aggDF
 #' @export
 
-create_SpAR <- function(occurrences, npsi = 1, visualize = FALSE) {
+create_spar <- function(occurrences, npsi = 1, visualize = FALSE) {
   # Checkmate input validation
   checkmate::assertDataFrame(occurrences)
   checkmate::assertNumeric(npsi)
@@ -247,3 +247,8 @@ create_SpAR <- function(occurrences, npsi = 1, visualize = FALSE) {
     return(result)
   }
 }
+
+# Create alias for create_spar
+#' @rdname create_spar
+#' @export
+create_SpAR <- create_spar

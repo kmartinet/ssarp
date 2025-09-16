@@ -69,28 +69,28 @@ tree <- read.tree(system.file("extdata",
 
 Now that we have a phylogenetic tree, we can estimate tip speciation rates for use in our speciation-area relationship. *ssarp* includes three methods for estimating tip speciation rates: BAMM (Rabosky 2014), the lambda calculation for crown groups from Magallόn and Sanderson (2001), and DR (Jetz et al. 2012). 
 
-The `ssarp::estimate_BAMM` function requires a `bammdata` object as input, which must be created using the `BAMMtools` package (Rabosky et al. 2014) after the user completes a BAMM analysis. This object includes tip speciation rates by default in the “meanTipLambda” list element, which `ssarp` accesses to add the appropriate tip speciation rates for each species to the occurrence record dataframe. 
+The `ssarp::estimate_bamm()` function requires a `bammdata` object as input, which must be created using the `BAMMtools` package (Rabosky et al. 2014) after the user completes a BAMM analysis. This object includes tip speciation rates by default in the “meanTipLambda” list element, which `ssarp` accesses to add the appropriate tip speciation rates for each species to the occurrence record dataframe. 
 
-DR stands for “diversification rate,” but it is ultimately a better estimation of speciation rate than net diversification (Belmaker and Jetz 2015; Quintero and Jetz 2018) and returns results similar to BAMM’s tip speciation rate estimations (Title and Rabosky 2019). The `ssarp::estimate_DR` function returns the values obtained from running an adapted version of the “DR_statistic” function from Sun and Folk (2020).
+DR stands for “diversification rate,” but it is ultimately a better estimation of speciation rate than net diversification (Belmaker and Jetz 2015; Quintero and Jetz 2018) and returns results similar to BAMM’s tip speciation rate estimations (Title and Rabosky 2019). The `ssarp::estimate_dr()` function returns the values obtained from running an adapted version of the “DR_statistic” function from Sun and Folk (2020).
 
-In addition to tip speciation rates, SSARP includes a function for calculating the speciation rate for a clade from Magallόn and Sanderson (2001). The `ssarp::estimate_speciation` function uses the `ape::subtrees` function (Paradis and Schliep 2019) to generate all possible subtrees from the user-provided phylogenetic tree that corresponds with the taxa of interest for the SpAR. Then, species in the provided occurrence records generated from previous steps in the `ssarp` workflow are grouped by island. For each group of species that comprise an island, the number of subtrees that represent that group of species and the root age of each subtree is recorded, along with the name and area of the island. The speciation rate for each subtree is then calculated following Equation 4 in Magallόn and Sanderson (2001). If an island includes multiple subtrees, the island speciation rate is the average of the calculated speciation rates. This average is calculated when the SpAR is plotted.
+In addition to tip speciation rates, `ssarp` includes a function for calculating the speciation rate for a clade from Magallόn and Sanderson (2001). The `ssarp::estimate_ms()` function uses the `ape::subtrees` function (Paradis and Schliep 2019) to generate all possible subtrees from the user-provided phylogenetic tree that corresponds with the taxa of interest for the SpAR. Then, species in the provided occurrence records generated from previous steps in the `ssarp` workflow are grouped by island. For each group of species that comprise an island, the number of subtrees that represent that group of species and the root age of each subtree is recorded, along with the name and area of the island. The speciation rate for each subtree is then calculated following Equation 4 in Magallόn and Sanderson (2001). If an island includes multiple subtrees, the island speciation rate is the average of the calculated speciation rates. This average is calculated when the SpAR is plotted.
 
-In this example, we will use the lambda calculation for crown groups from Magallόn and Sanderson (2001) through the `ssarp::estimate_MS()` function. The "label_type" parameter in this function tells *ssarp* whether the tip labels on the given tree include the full species name (binomial) or just the specific epithet (epithet).
+In this example, we will use the lambda calculation for crown groups from Magallόn and Sanderson (2001) through the `ssarp::estimate_ms()` function. The "label_type" parameter in this function tells *ssarp* whether the tip labels on the given tree include the full species name (binomial) or just the specific epithet (epithet).
 
 
 ``` r
 # Calculate tip speciation rates using the lambda calculation for crown groups from Magallόn and Sanderson (2001)
-speciation_occurrences <- estimate_MS(tree = tree, label_type = "epithet", occurrences = nocont_dat)
+speciation_occurrences <- estimate_ms(tree = tree, label_type = "epithet", occurrences = nocont_dat)
 ```
 
-The “speciation_occurrences” object is a dataframe containing island areas with their corresponding speciation rate as estimated by the `ssarp::estimate_MS()` function.
+The “speciation_occurrences” object is a dataframe containing island areas with their corresponding speciation rate as estimated by the `ssarp::estimate_ms()` function.
 
 ## Create Speciation-Area Relationship
-Next, we will use the “speciation_occurrences” object with the `ssarp::create_SpAR()` function to create a SpAR. Just like the `ssarp::create_SAR()` function, the `ssarp::create_SpAR()` function creates multiple regression objects with breakpoints up to the user-specified “npsi” parameter. For example, if “npsi” is two, `ssarp::create_SpAR()` will generate regression objects with zero (linear regression), one, and two breakpoints. The function will then return the regression object with the lowest AIC score. The “npsi” parameter will be set to one in this example. Note that if linear regression (zero breakpoints) is better-supported than segmented regression with one breakpoint, the linear regression will be returned instead. We set the "visualize" parameter to `TRUE` so that the function outputs the plot of the SAR.
+Next, we will use the “speciation_occurrences” object with the `ssarp::create_spar()` function to create a SpAR (can also be run with `create_SpAR()`). Just like the `ssarp::create_sar()` function, the `ssarp::create_spar()` function creates multiple regression objects with breakpoints up to the user-specified “npsi” parameter. For example, if “npsi” is two, `ssarp::create_spar()` will generate regression objects with zero (linear regression), one, and two breakpoints. The function will then return the regression object with the lowest AIC score. The “npsi” parameter will be set to one in this example. Note that if linear regression (zero breakpoints) is better-supported than segmented regression with one breakpoint, the linear regression will be returned instead. We set the "visualize" parameter to `TRUE` so that the function outputs the plot of the SAR.
 
 
 ``` r
-create_SpAR(occurrences = speciation_occurrences, npsi = 1, visualize = TRUE)
+create_spar(occurrences = speciation_occurrences, npsi = 1, visualize = TRUE)
 ```
 
 ```
@@ -119,7 +119,7 @@ create_SpAR(occurrences = speciation_occurrences, npsi = 1, visualize = TRUE)
 ![This is the SpAR for *Anolis* including island-based occurrences within a polygon around Caribbean islands from the first 10000 records for the genus in GBIF! The best-fit model was a segmented regression with one breakpoint.](anolis_SpAR-1.png)
 
 
-You will notice that two of the largest islands have a speciation rate of zero in this example. This very likely occurred because the calculation for speciation rate in Magallόn and Sanderson (2001) that `ssarp::estimate_MS()` uses is based on monophyly, which can be disrupted on islands with non-native species occurrence records. When using the `ssarp::estimate_MS()` function to estimate speciation rates for a SpAR, it is incredibly important to manually filter the returned occurrence records to remove non-native species.
+You will notice that two of the largest islands have a speciation rate of zero in this example. This very likely occurred because the calculation for speciation rate in Magallόn and Sanderson (2001) that `ssarp::estimate_ms()` uses is based on monophyly, which can be disrupted on islands with non-native species occurrence records. When using the `ssarp::estimate_ms()` function to estimate speciation rates for a SpAR, it is incredibly important to manually filter the returned occurrence records to remove non-native species.
 
 
 ### Literature Cited
