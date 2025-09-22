@@ -1,8 +1,29 @@
 Package: ssarp
 Type: Package
-Title: ssarp (Species-/Speciation-Area Relationship Projector)
-Description: Create Species- and Speciation-Area Relationships for any taxa.
-Authors@R: person("Kristen", "Martinet", email = "kmartinet@outlook.com", role = c("aut", "cre"))
+Title: Species-/Speciation-Area Relationship Projector
+Description: Create Species- and Speciation-Area Relationships using occurrence 
+  records or presence-absence matrices.
+Authors@R: c(person(given = "Kristen", 
+                    family = "Martinet", 
+                    email = "kmartinet@outlook.com", 
+                    role = c("aut", "cre"),
+                    comment = c(ORCID = "0000-0002-3905-9507")),
+              person(given = "Luke",
+                    family = "Harmon",
+                    role = "ctb",
+                    comment = c(ORCID = "0000-0002-4985-5750")),
+              person(given = "Cristian",
+                    family = "Román-Palacios",
+                    role = "ctb",
+                    comment = c(ORCID = "0000-0003-1696-4886")),
+              person(given = "Tom",
+                    family = "Matthews",
+                    role = "rev",
+                    comment = "Dr. Matthews reviewed the package for rOpenSci, see <https://github.com/ropensci/software-review/issues/685>"),
+              person(given = "Joel", 
+                    family = "Nitta", 
+                    role = "rev",
+                    comment = "Dr. Nitta reviewed the package for rOpenSci, see <https://github.com/ropensci/software-review/issues/685>"))
 Maintainer: Kristen Martinet <kmartinet@outlook.com>
 Version: 0.5.0
 URL: https://github.com/kmartinet/ssarp, https://kmartinet.github.io/ssarp/

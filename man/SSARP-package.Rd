@@ -4,9 +4,9 @@
 \name{ssarp-package}
 \alias{ssarp}
 \alias{ssarp-package}
-\title{ssarp: ssarp (Species-/Speciation-Area Relationship Projector)}
+\title{ssarp: Species-/Speciation-Area Relationship Projector}
 \description{
-Create Species- and Speciation-Area Relationships for any taxa.
+Create Species- and Speciation-Area Relationships using occurrence records or presence-absence matrices.
 }
 \seealso{
 Useful links:
@@ -18,7 +18,15 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Kristen Martinet \email{kmartinet@outlook.com}
+\strong{Maintainer}: Kristen Martinet \email{kmartinet@outlook.com} (\href{https://orcid.org/0000-0002-3905-9507}{ORCID})
+
+Other contributors:
+\itemize{
+  \item Luke Harmon (\href{https://orcid.org/0000-0002-4985-5750}{ORCID}) [contributor]
+  \item Cristian Román-Palacios (\href{https://orcid.org/0000-0003-1696-4886}{ORCID}) [contributor]
+  \item Tom Matthews (Dr. Matthews reviewed the package for rOpenSci, see <https://github.com/ropensci/software-review/issues/685>) [reviewer]
+  \item Joel Nitta (Dr. Nitta reviewed the package for rOpenSci, see <https://github.com/ropensci/software-review/issues/685>) [reviewer]
+}
 
 }
 \keyword{internal}
