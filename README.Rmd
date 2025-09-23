@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# ssarp
+# ssarp <a href="https://kmartinet.github.io/ssarp/"><img src="man/figures/logo.png" align="right" height="300" alt="ssarp website" /></a>
 
 <!-- badges: start -->
   [![Codecov test coverage](https://codecov.io/gh/kmartinet/ssarp/branch/main/graph/badge.svg)](https://codecov.io/gh/kmartinet/ssarp?branch=main)

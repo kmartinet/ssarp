@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ssarp
+# ssarp <a href="https://kmartinet.github.io/ssarp/"><img src="man/figures/logo.png" align="right" height="300" alt="ssarp website" /></a>
 
 <!-- badges: start -->
 
@@ -185,13 +185,13 @@ head(land_dat, n = 5)
 #> 3                            Anolis roquet (Bonnaterre, 1789)      Anolis
 #> 4                            Anolis roquet (Bonnaterre, 1789)      Anolis
 #> 5                  Anolis cristatellus Duméril & Bibron, 1837      Anolis
-#>   specificEpithet decimalLongitude decimalLatitude              First Second
+#>   specificEpithet decimalLongitude decimalLatitude              first second
 #> 1     hispaniolae        -70.59716        19.09851 Dominican Republic   <NA>
 #> 2       distichus        -68.40635        18.67363 Dominican Republic   <NA>
 #> 3          roquet        -60.89301        14.77053         Martinique   <NA>
 #> 4          roquet        -60.89301        14.77053         Martinique   <NA>
 #> 5    cristatellus        -66.12385        18.47122               <NA>   <NA>
-#>   Third                           datasetKey
+#>   third                           datasetKey
 #> 1  <NA> 50c9509d-22c7-4a22-a47d-8c48425ef4a7
 #> 2  <NA> 50c9509d-22c7-4a22-a47d-8c48425ef4a7
 #> 3  <NA> 50c9509d-22c7-4a22-a47d-8c48425ef4a7
@@ -235,13 +235,13 @@ head(area_dat, n = 5)
 #> 3                            Anolis roquet (Bonnaterre, 1789)      Anolis
 #> 4                            Anolis roquet (Bonnaterre, 1789)      Anolis
 #> 8                            Anolis evermanni Stejneger, 1904      Anolis
-#>   specificEpithet decimalLongitude decimalLatitude              First Second
+#>   specificEpithet decimalLongitude decimalLatitude              first second
 #> 1     hispaniolae        -70.59716        19.09851 Dominican Republic   <NA>
 #> 2       distichus        -68.40635        18.67363 Dominican Republic   <NA>
 #> 3          roquet        -60.89301        14.77053         Martinique   <NA>
 #> 4          roquet        -60.89301        14.77053         Martinique   <NA>
 #> 8       evermanni        -66.31459        18.29657        Puerto Rico   <NA>
-#>   Third                           datasetKey       areas
+#>   third                           datasetKey       areas
 #> 1  <NA> 50c9509d-22c7-4a22-a47d-8c48425ef4a7 83104562500
 #> 2  <NA> 50c9509d-22c7-4a22-a47d-8c48425ef4a7 83104562500
 #> 3  <NA> 50c9509d-22c7-4a22-a47d-8c48425ef4a7  1190000000
@@ -280,20 +280,20 @@ create_sar(occurrences = area_dat, npsi = 1, visualize = TRUE)
     #> segmented.lm(obj = linear, seg.Z = ~x, npsi = 1, control = segmented::seg.control(display = FALSE))
     #> 
     #> Estimated Break-Point(s):
-    #>           Est. St.Err
-    #> psi1.x 21.845  0.716
+    #>          Est. St.Err
+    #> psi1.x 21.82  0.712
     #> 
     #> Coefficients of the linear terms:
     #>             Estimate Std. Error t value Pr(>|t|)
-    #> (Intercept) -0.24285    1.00393  -0.242    0.810
-    #> x            0.05469    0.05368   1.019    0.316
-    #> U1.x         0.73913    0.21326   3.466       NA
+    #> (Intercept) -0.09719    0.99566  -0.098    0.923
+    #> x            0.04734    0.05324   0.889    0.381
+    #> U1.x         0.74262    0.21150   3.511       NA
     #> 
-    #> Residual standard error: 0.5587 on 32 degrees of freedom
-    #> Multiple R-Squared: 0.6536,  Adjusted R-squared: 0.6211 
+    #> Residual standard error: 0.5541 on 32 degrees of freedom
+    #> Multiple R-Squared: 0.6533,  Adjusted R-squared: 0.6208 
     #> 
-    #> Boot restarting based on 8 samples. Last fit:
-    #> Convergence attained in 2 iterations (rel. change 6.4306e-09)
+    #> Boot restarting based on 6 samples. Last fit:
+    #> Convergence attained in 2 iterations (rel. change 6.6315e-12)
 
 This is the species-area relationship (SAR) for Anolis including
 island-based occurrences within a polygon around Caribbean islands from
@@ -303,14 +303,16 @@ statistical information about the model.
 
 ### A Note About Spatial Autocorrelation
 
-Species-area relationships (SARs) and speciation-area relationships (SpARs) are 
-impacted by the environmental and spatial characteristics of the islands (or 
-island-like areas) of interest. When inferring SARs and SpARs, researchers 
-typically treat these effects as part of the broader biogeographic processes 
-that are captured by the SARs and SpARs (Triantis et al. 2012). However, 
-ignoring spatial effects when inferring SARs and SpARs can result in biased 
-parameter estimates (Barros et al. 2023). Please refer to 
-[this vignette to learn more about how to test for spatial autocorrelation when using `ssarp` to create SARs and SpARs](https://kmartinet.github.io/ssarp/articles/Spatial_Autocorrelation.html).
+Species-area relationships (SARs) and speciation-area relationships
+(SpARs) are impacted by the environmental and spatial characteristics of
+the islands (or island-like areas) of interest. When inferring SARs and
+SpARs, researchers typically treat these effects as part of the broader
+biogeographic processes that are captured by the SARs and SpARs
+(Triantis et al. 2012). However, ignoring spatial effects when inferring
+SARs and SpARs can result in biased parameter estimates (Barros et
+al. 2023). Please refer to [this vignette to learn more about how to
+test for spatial autocorrelation when using `ssarp` to create SARs and
+SpARs](https://kmartinet.github.io/ssarp/articles/Spatial_Autocorrelation.html).
 
 ### Workflow Summary for using data from GBIF to create a species-area relationship plot
 
@@ -399,9 +401,10 @@ polygons nested within others or polygons with holes in the middle.
 
 #### Literature Cited
 
-- Barros, D.D., Mathias, M.d.L., Borges, P.A.V., & Borda-de-Água, L. (2023). The
-  Importance of Including Spatial Autocorrelation When Modelling Species 
-  Richness in Archipelagos: A Bayesian Approach. Diversity, 15: 127.
+- Barros, D.D., Mathias, M.d.L., Borges, P.A.V., & Borda-de-Água, L.
+  (2023). The Importance of Including Spatial Autocorrelation When
+  Modelling Species Richness in Archipelagos: A Bayesian Approach.
+  Diversity, 15: 127.
 - Jetz, W., Thomas, G.H, Joy, J.B., Harmann, K., & Mooers, A.O. (2012).
   The global diversity of birds in space and time. *Nature*, 491:
   444-448.
@@ -414,6 +417,6 @@ polygons nested within others or polygons with holes in the middle.
   Brown, J.W., Huang, H., & Larson, J.G. (2014). BAMMtools: an R package
   for the analysis of evolutionary dynamics on phylogenetic trees.
   Methods in Ecology and Evolution, 5: 701-707.
-- Triantis, K.A., Guilhaumon, F., & Whittaker, R.J. (2012), The island 
-  species–area relationship: biology and statistics. Journal of Biogeography, 
-  39: 215-231.
+- Triantis, K.A., Guilhaumon, F., & Whittaker, R.J. (2012), The island
+  species–area relationship: biology and statistics. Journal of
+  Biogeography, 39: 215-231.

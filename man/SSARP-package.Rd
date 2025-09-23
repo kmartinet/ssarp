@@ -6,6 +6,8 @@
 \alias{ssarp-package}
 \title{ssarp: Species-/Speciation-Area Relationship Projector}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 Create Species- and Speciation-Area Relationships using occurrence records or presence-absence matrices.
 }
 \seealso{
