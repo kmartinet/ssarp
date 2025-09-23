@@ -45,7 +45,7 @@ includes the raw points from the plot created here. They can be accessed
 as demonstrated in the Examples section.
 
 More information about the three methods for estimating speciation rate
-included in \code{ssarp} can be found in \href{https://kmartinet.github.io/ssarp/articles/Create_SpAR.html}{ssarp's SpAR vignette}.
+included in \code{ssarp} can be found in \href{https://docs.ropensci.org/ssarp/articles/Create_SpAR.html}{ssarp's SpAR vignette}.
 }
 \examples{
 # The GBIF key for the Anolis genus is 8782549

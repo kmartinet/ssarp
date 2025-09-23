@@ -10,7 +10,7 @@
 #' as demonstrated in the Examples section.
 #'
 #' More information about the three methods for estimating speciation rate
-#' included in `ssarp` can be found in [ssarp's SpAR vignette](https://kmartinet.github.io/ssarp/articles/Create_SpAR.html).
+#' included in `ssarp` can be found in [ssarp's SpAR vignette](https://docs.ropensci.org/ssarp/articles/Create_SpAR.html).
 #' @param occurrences The dataframe output by one of ssarp's speciation
 #' methods (`ssarp::estimate_bamm()`, `ssarp::estimate_dr()`,
 #' `ssarp::estimate_ms()`), or if using a custom dataframe, ensure that it

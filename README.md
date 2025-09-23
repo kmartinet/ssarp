@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ssarp <a href="https://kmartinet.github.io/ssarp/"><img src="man/figures/logo.png" align="right" height="300" alt="ssarp website" /></a>
+# ssarp <a href="https://docs.ropensci.org/ssarp/index.html"><img src="man/figures/logo.png" align="right" height="300" alt="ssarp website" /></a>
 
 <!-- badges: start -->
 
@@ -95,7 +95,7 @@ species richness (the number of species) and the area of the land mass
 on which the species live. This brief example covers the *ssarp*
 workflow for creating a SAR, and more detailed explanations of the code
 and methods can be found [in the Articles on the SSARP pkgdown
-website](https://kmartinet.github.io/ssarp/index.html).
+website](https://docs.ropensci.org/ssarp/index.html).
 
 In order to construct a species-area relationship with *ssarp*, we will:
 
@@ -316,7 +316,7 @@ biogeographic processes that are captured by the SARs and SpARs
 SARs and SpARs can result in biased parameter estimates (Barros et
 al. 2023). Please refer to [this vignette to learn more about how to
 test for spatial autocorrelation when using `ssarp` to create SARs and
-SpARs](https://kmartinet.github.io/ssarp/articles/Spatial_Autocorrelation.html).
+SpARs](https://docs.ropensci.org/ssarp/articles/Spatial_Autocorrelation.html).
 
 ### Workflow Summary for using data from GBIF to create a species-area relationship plot
 

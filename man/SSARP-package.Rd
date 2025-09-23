@@ -13,9 +13,9 @@ Create Species- and Speciation-Area Relationships using occurrence records or pr
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/kmartinet/ssarp}
-  \item \url{https://kmartinet.github.io/ssarp/}
-  \item Report bugs at \url{https://github.com/kmartinet/ssarp/issues}
+  \item \url{https://github.com/ropensci/ssarp}
+  \item \url{https://docs.ropensci.org/ssarp}
+  \item Report bugs at \url{https://github.com/ropensci/ssarp/issues}
 }
 
 }
