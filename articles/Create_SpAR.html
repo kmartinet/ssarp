@@ -44,7 +44,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/kmartinet/ssarp/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/ropensci/ssarp/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -60,7 +60,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Construct a Speciation-Area Relationship with ssarp</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/kmartinet/ssarp/blob/main/vignettes/Create_SpAR.Rmd" class="external-link"><code>vignettes/Create_SpAR.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ropensci/ssarp/blob/main/vignettes/Create_SpAR.Rmd" class="external-link"><code>vignettes/Create_SpAR.Rmd</code></a></small>
       <div class="d-none name"><code>Create_SpAR.Rmd</code></div>
     </div>
 
@@ -72,11 +72,11 @@
 <p>A speciation-area relationship (SpAR) plots speciation rates against
 the area of the island on which the associated species live. This
 vignette, which covers how to create a SpAR using the <em>ssarp</em>
-package, uses knowledge and data generated from <a href="https://kmartinet.github.io/ssarp/articles/Create_SAR.html">the
+package, uses knowledge and data generated from <a href="https://kmartinet.github.io/ssarp/articles/Create_SAR.html" class="external-link">the
 vignette describing the creation of species-area relationships</a>. Code
 relevant to generating the necessary data for this SpAR example from the
 species-area relationship (SAR) vignette will be included here, but the
-reader is encouraged to read <a href="https://kmartinet.github.io/ssarp/articles/Create_SAR.html">the
+reader is encouraged to read <a href="https://kmartinet.github.io/ssarp/articles/Create_SAR.html" class="external-link">the
 SAR vignette</a> for additional details.</p>
 <p>In this vignette, we will create a SpAR for the lizard genus
 <em>Anolis</em>, as a continuation of the SAR vignette.</p>
@@ -90,7 +90,7 @@ names and areas for <em>Anolis</em> lizards that live on Caribbean
 islands.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/rgbif" class="external-link">rgbif</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/kmartinet/ssarp" class="external-link">ssarp</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/ssarp">ssarp</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/emmanuelparadis/ape" class="external-link">ape</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Get the GBIF key for the Anolis genus</span></span>
