@@ -13,6 +13,7 @@
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Species-/Speciation-Area Relationship Projector">
 <meta name="description" content="Create Species- and Speciation-Area Relationships using occurrence records or presence-absence matrices.">
 <meta property="og:description" content="Create Species- and Speciation-Area Relationships using occurrence records or presence-absence matrices.">
+<meta property="og:image" content="https://kmartinet.github.io/ssarp/logo.png">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -55,8 +56,11 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="ssarp">ssarp<a class="anchor" aria-label="anchor" href="#ssarp"></a>
-</h1></div>
+<div class="page-header">
+<img src="logo.png" class="logo" alt=""><h1 id="ssarp-">ssarp 
+<a class="anchor" aria-label="anchor" href="#ssarp-"></a>
+</h1>
+</div>
 <!-- badges: start -->
 
 <p><code>ssarp</code> (Species-/Speciation-Area Relationship Projector) is an R package that provides a suite of functions to help users <strong>create speciation- and species- area relationships for island-dwelling taxa</strong> using occurrence data from GBIF (Global Biodiversity Information Facility) or the user’s own occurrence data.</p>
@@ -172,13 +176,13 @@
 <span><span class="co">#&gt; 3                            Anolis roquet (Bonnaterre, 1789)      Anolis</span></span>
 <span><span class="co">#&gt; 4                            Anolis roquet (Bonnaterre, 1789)      Anolis</span></span>
 <span><span class="co">#&gt; 5                  Anolis cristatellus Duméril &amp; Bibron, 1837      Anolis</span></span>
-<span><span class="co">#&gt;   specificEpithet decimalLongitude decimalLatitude              First Second</span></span>
+<span><span class="co">#&gt;   specificEpithet decimalLongitude decimalLatitude              first second</span></span>
 <span><span class="co">#&gt; 1     hispaniolae        -70.59716        19.09851 Dominican Republic   &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 2       distichus        -68.40635        18.67363 Dominican Republic   &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 3          roquet        -60.89301        14.77053         Martinique   &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 4          roquet        -60.89301        14.77053         Martinique   &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 5    cristatellus        -66.12385        18.47122               &lt;NA&gt;   &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;   Third                           datasetKey</span></span>
+<span><span class="co">#&gt;   third                           datasetKey</span></span>
 <span><span class="co">#&gt; 1  &lt;NA&gt; 50c9509d-22c7-4a22-a47d-8c48425ef4a7</span></span>
 <span><span class="co">#&gt; 2  &lt;NA&gt; 50c9509d-22c7-4a22-a47d-8c48425ef4a7</span></span>
 <span><span class="co">#&gt; 3  &lt;NA&gt; 50c9509d-22c7-4a22-a47d-8c48425ef4a7</span></span>
@@ -204,13 +208,13 @@
 <span><span class="co">#&gt; 3                            Anolis roquet (Bonnaterre, 1789)      Anolis</span></span>
 <span><span class="co">#&gt; 4                            Anolis roquet (Bonnaterre, 1789)      Anolis</span></span>
 <span><span class="co">#&gt; 8                            Anolis evermanni Stejneger, 1904      Anolis</span></span>
-<span><span class="co">#&gt;   specificEpithet decimalLongitude decimalLatitude              First Second</span></span>
+<span><span class="co">#&gt;   specificEpithet decimalLongitude decimalLatitude              first second</span></span>
 <span><span class="co">#&gt; 1     hispaniolae        -70.59716        19.09851 Dominican Republic   &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 2       distichus        -68.40635        18.67363 Dominican Republic   &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 3          roquet        -60.89301        14.77053         Martinique   &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 4          roquet        -60.89301        14.77053         Martinique   &lt;NA&gt;</span></span>
 <span><span class="co">#&gt; 8       evermanni        -66.31459        18.29657        Puerto Rico   &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;   Third                           datasetKey       areas</span></span>
+<span><span class="co">#&gt;   third                           datasetKey       areas</span></span>
 <span><span class="co">#&gt; 1  &lt;NA&gt; 50c9509d-22c7-4a22-a47d-8c48425ef4a7 83104562500</span></span>
 <span><span class="co">#&gt; 2  &lt;NA&gt; 50c9509d-22c7-4a22-a47d-8c48425ef4a7 83104562500</span></span>
 <span><span class="co">#&gt; 3  &lt;NA&gt; 50c9509d-22c7-4a22-a47d-8c48425ef4a7  1190000000</span></span>
@@ -233,20 +237,20 @@
 <span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co">#&gt; segmented.lm(obj = linear, seg.Z = ~x, npsi = 1, control = segmented::seg.control(display = FALSE))</span></span>
 <span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="co">#&gt; Estimated Break-Point(s):</span></span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">#&gt;           Est. St.Err</span></span>
-<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="co">#&gt; psi1.x 21.845  0.716</span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">#&gt;          Est. St.Err</span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="co">#&gt; psi1.x 21.82  0.712</span></span>
 <span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="co">#&gt; Coefficients of the linear terms:</span></span>
 <span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)</span></span>
-<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="co">#&gt; (Intercept) -0.24285    1.00393  -0.242    0.810</span></span>
-<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="co">#&gt; x            0.05469    0.05368   1.019    0.316</span></span>
-<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="co">#&gt; U1.x         0.73913    0.21326   3.466       NA</span></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="co">#&gt; (Intercept) -0.09719    0.99566  -0.098    0.923</span></span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="co">#&gt; x            0.04734    0.05324   0.889    0.381</span></span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="co">#&gt; U1.x         0.74262    0.21150   3.511       NA</span></span>
 <span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.5587 on 32 degrees of freedom</span></span>
-<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a><span class="co">#&gt; Multiple R-Squared: 0.6536,  Adjusted R-squared: 0.6211 </span></span>
+<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.5541 on 32 degrees of freedom</span></span>
+<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a><span class="co">#&gt; Multiple R-Squared: 0.6533,  Adjusted R-squared: 0.6208 </span></span>
 <span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a><span class="co">#&gt; Boot restarting based on 8 samples. Last fit:</span></span>
-<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a><span class="co">#&gt; Convergence attained in 2 iterations (rel. change 6.4306e-09)</span></span></code></pre></div>
+<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a><span class="co">#&gt; Boot restarting based on 6 samples. Last fit:</span></span>
+<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a><span class="co">#&gt; Convergence attained in 2 iterations (rel. change 6.6315e-12)</span></span></code></pre></div>
 <p>This is the species-area relationship (SAR) for Anolis including island-based occurrences within a polygon around Caribbean islands from the first 10,000 records for the genus in GBIF! The best-fit model was a segmented regression with one breakpoint. The R console will also output statistical information about the model.</p>
 </div>
 <div class="section level3">
