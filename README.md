@@ -6,8 +6,8 @@
 <!-- badges: start -->
 
 [![Codecov test
-coverage](https://codecov.io/gh/kmartinet/ssarp/branch/main/graph/badge.svg)](https://codecov.io/gh/kmartinet/ssarp?branch=main)
-[![R-CMD-check](https://github.com/kmartinet/ssarp/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/kmartinet/ssarp/actions/workflows/R-CMD-check.yaml)
+coverage](https://codecov.io/gh/ropensci/ssarp/branch/main/graph/badge.svg)](https://codecov.io/gh/ropensci/ssarp?branch=main)
+[![R-CMD-check](https://github.com/ropensci/ssarp/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/ssarp/actions/workflows/R-CMD-check.yaml)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -45,6 +45,10 @@ Please find the [bioRxiv preprint of the manuscript associated with
 *ssarp*
 here!](https://www.biorxiv.org/content/10.1101/2024.12.31.630948v1)
 
+Please note that this package is released with a [Contributor Code of
+Conduct](https://ropensci.org/code-of-conduct/). By contributing to this
+project, you agree to abide by its terms.
+
 ## Installation
 
 To install *ssarp*, use the “install_github” function from the
@@ -54,7 +58,7 @@ To install *ssarp*, use the “install_github” function from the
 # install.packages("devtools")
 library(devtools)
 
-install_github("kmartinet/ssarp")
+install_github("ropensci/ssarp")
 ```
 
 ## Suppressing Messages
