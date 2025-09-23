@@ -47,7 +47,7 @@ here!](https://www.biorxiv.org/content/10.1101/2024.12.31.630948v1)
 
 Please note that this package is released with a [Contributor Code of
 Conduct](https://ropensci.org/code-of-conduct/). By contributing to this
-project, you agree to abide by its terms.
+project, you agree to abide by its terms. 
 
 ## Installation
 
